@@ -5,11 +5,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    editorLayout: [],
+    componentLists: [],
   },
   mutations: {
+    set_editorLayout: (state, payload) => {
+      state.editorLayout = payload.editorLayout;
+    },
   },
-  actions: {
-  },
-  modules: {
+  getters: {
+    editorLayout: (state) => state.editorLayout,
   },
 });
