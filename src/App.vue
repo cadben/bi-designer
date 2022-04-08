@@ -31,7 +31,6 @@ body {
 }
 #app {
   height: 100vh;
-  width: 100vw;
   .editor-work {
     display: flex;
     height: 100%;

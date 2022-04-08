@@ -7,27 +7,20 @@
         <div class="container-header">组件库</div>
         <el-collapse>
           <el-collapse-item title="基础组件" name="1">
-            <draggable
-              :group="{ name: 'component', pull: 'clone', put: false }"
-              draggable=".component-card"
-              class="drag"
-              :options="{ sort: false }"
-              @start="startDrag"
-              @end="addDrag"
+            <div
+              v-for="item in cList.filter(v => v.type === 'normal')"
+              :key="item.name"
+              class="component-card"
+              draggable="true"
+              @dragstart="(e) => handleDragStart(e, item)"
             >
-                <div
-                  v-for="item in cList.filter(v => v.type === 'normal')"
-                  :key="item.name"
-                  class="component-card"
-                >
-                  <div class="card-top">
-                    {{ item.label }}
-                  </div>
-                  <div class="card-bottom">
-                    {{ item.name }}
-                  </div>
-                </div>
-            </draggable>
+              <div class="card-top">
+                {{ item.label }}
+              </div>
+              <div class="card-bottom">
+                {{ item.name }}
+              </div>
+            </div>
           </el-collapse-item>
           <el-collapse-item title="数据展示组件" name="2">
           </el-collapse-item>
@@ -36,12 +29,9 @@
     </div>
 </template>
 <script>
-import draggable from 'vuedraggable';
-
 export default {
   props: {},
   components: {
-    draggable,
   },
   data() {
     return {
@@ -80,13 +70,8 @@ export default {
     };
   },
   methods: {
-    startDrag({
-      to, from, item, clone, oldIndex, newIndex,
-    }) {
-      console.log('当前是开始拖动', to, from, item, clone, oldIndex, newIndex);
-    },
-    addDrag(evt) {
-      console.log('结束拖动', evt);
+    handleDragStart(e, data) {
+      e.dataTransfer.setData('componentId', data.name);
     },
   },
 };
@@ -108,6 +93,8 @@ export default {
     }
     /deep/ .el-collapse-item__content {
       padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
       // justify-content: space-between;
     }
     .drag {
