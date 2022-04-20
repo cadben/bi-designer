@@ -20,13 +20,16 @@ export default new Vuex.Store({
     handleAddComponent({ commit, state }, componentName) {
       console.log(componentName);
       let initData = {};
+      if (!componentName) {
+        return;
+      }
       if (componentName === 'text') {
         initData = {
           type: 'text',
           options: {
             text: '请输入文字',
             color: '#000000',
-            fontSize: 48,
+            fontSize: 12,
             fontFamily: 'ZCOOL QingKe HuangYou',
             bold: false,
             italic: false,
@@ -54,7 +57,7 @@ export default new Vuex.Store({
         width: 400,
         height: 200,
         bgcolor: initData.bgcolor || 'rgba(0,0,0,0)',
-        active: true,
+        active: false,
         data: initData,
         id: Math.random(),
       };

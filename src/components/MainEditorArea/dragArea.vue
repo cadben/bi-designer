@@ -12,7 +12,10 @@
         :w="item.width"
         :h="item.height"
         :parent="true"
-        :active="false"
+        :active="item.active"
+        :is-conflict-check="true"
+        :prevent-deactivation="true"
+        @activated="onActivated(item)"
       >
         <component :is="`c-${item.data.type}`" :data="item"></component>
       </vue-draggable-resizable>
@@ -42,6 +45,23 @@ export default {
       const componentName = e.dataTransfer.getData('componentId');
       this.$store.dispatch('handleAddComponent', componentName);
     },
+    onActivated(e) {
+      this.editorLayout.forEach((element) => {
+        const { id } = element;
+        if (id === e.id) {
+          // eslint-disable-next-line no-param-reassign
+          element.active = true;
+        } else {
+          // eslint-disable-next-line no-param-reassign
+          element.active = false;
+        }
+      });
+      e.active = true;
+    },
+    onDeactivated(e) {
+      console.log(e);
+      e.active = false;
+    },
   },
 };
 </script>
@@ -50,5 +70,12 @@ export default {
   width: 100%;
   height: 100%;
   background: #fff;
+  .resize {
+    border: 1px solid transparent;
+    cursor: move;
+  }
+  .active-resize {
+    border: 1px solid #000
+  }
 }
 </style>

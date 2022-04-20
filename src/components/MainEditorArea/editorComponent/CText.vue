@@ -1,8 +1,9 @@
 <template>
     <div
+      class="text-box"
       :style="boxStyle"
     >
-        {{ options.text }}
+      <div sty>{{ options.text }}</div>
     </div>
 </template>
 <script>
@@ -31,7 +32,7 @@ export default {
         color,
         fontSize: `${fontSize}px`,
         fontFamily,
-        bold,
+        fontWeight: bold ? 'bold' : 'normal',
         italic,
         textAlign,
       };
@@ -52,9 +53,10 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.dragArea {
-  width: 100%;
+.text-box {
+  caret-color: transparent;
+  overflow: hidden;
   height: 100%;
-  background: #fff;
+  width: 100%;
 }
 </style>
