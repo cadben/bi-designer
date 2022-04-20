@@ -3,7 +3,7 @@
       class="text-box"
       :style="boxStyle"
     >
-      <div sty>{{ options.text }}</div>
+      <div>{{ options.text }}</div>
     </div>
 </template>
 <script>
@@ -25,7 +25,6 @@ export default {
         fontSize,
         fontFamily,
         bold,
-        italic,
         textAlign,
       } = this.options;
       return {
@@ -33,12 +32,10 @@ export default {
         fontSize: `${fontSize}px`,
         fontFamily,
         fontWeight: bold ? 'bold' : 'normal',
-        italic,
         textAlign,
       };
     },
     options() {
-      console.log(this.data.data.options);
       return this.data.data.options;
     },
   },

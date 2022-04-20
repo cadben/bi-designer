@@ -42,16 +42,6 @@ export default {
           type: 'normal',
         },
         {
-          name: 'button',
-          label: '按钮',
-          type: 'normal',
-        },
-        {
-          name: 'input',
-          label: '输入框',
-          type: 'normal',
-        },
-        {
           name: 'table',
           label: '表格',
           type: 'normal',

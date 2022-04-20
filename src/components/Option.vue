@@ -28,15 +28,14 @@
                 </el-input>
             </el-col>
         </el-row>
-        <el-row v-if="textarea" class="option-row">
+        <el-row v-if="options.text" class="option-row">
           <el-col :span="6" class="option-item-label">内容：</el-col>
           <el-col :span="18">
             <el-input
               type="textarea"
               :rows="2"
               placeholder="请输入内容"
-              v-model="textarea"
-              @change="handleText"
+              v-model="options.text"
             >
             </el-input>
           </el-col>
@@ -68,6 +67,30 @@
             </el-radio-group>
           </el-col>
         </el-row>
+        <el-row v-if="options.getDataType" class="option-row">
+          <el-col :span="6" class="option-item-label">获取方式：</el-col>
+          <el-col :span="18">
+            <el-select
+              v-model="options.getDataType"
+              size="mini"
+            >
+              <el-option value="static" label="静态数据" />
+              <el-option value="get" label="API(GET)" />
+            </el-select>
+          </el-col>
+        </el-row>
+        <el-row v-if="options.tableData" class="option-row">
+          <el-col :span="6" class="option-item-label">内容：</el-col>
+          <el-col :span="18">
+            <el-input
+              type="textarea"
+              :rows="10"
+              v-model="curTableData"
+              @blur="handleSetTableData"
+            >
+            </el-input>
+          </el-col>
+        </el-row>
       </div>
     </div>
 </template>
@@ -84,15 +107,17 @@ export default {
   },
   data() {
     return {
-      textarea: '',
+      curTableData: '',
     };
   },
   mounted() {
-    this.textarea = this.options?.text;
+    if (this.options.tableData) {
+      this.curTableData = JSON.stringify(this.options.tableData);
+    }
   },
   methods: {
-    handleText(v) {
-      this.selectCompont.data.options.text = v;
+    handleSetTableData() {
+      this.options.tableData = JSON.parse(this.curTableData);
     },
   },
 };
@@ -104,7 +129,7 @@ export default {
     padding: 20px;
     .options-list {
       .option-item-label {
-        text-align: right;
+        text-align: left;
         white-space: nowrap;
       }
       .option-row {

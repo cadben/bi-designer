@@ -32,21 +32,32 @@ export default new Vuex.Store({
             fontSize: 12,
             fontFamily: 'ZCOOL QingKe HuangYou',
             bold: false,
-            italic: false,
-            stroke: false,
-            strokeColor: '#ffffff',
-            strokeSize: 2,
-            shadow: false,
-            shadowColor: '#ff0000',
-            shadowBlur: 10,
-            scroll: false,
-            scrollSpeed: 50,
-            openlink: false,
-            linkTarget: '_blank',
-            linkHref: '',
-            lineHeight: 50,
-            backgroundColor: 'rgba(100,100,0,0.5)',
             textAlign: 'left',
+          },
+        };
+      } else if (componentName === 'table') {
+        initData = {
+          type: 'table',
+          options: {
+            getDataType: 'static',
+            tableData: [{
+              date: '2016-05-02',
+              name: '王小虎',
+              address: '上海市普陀区金沙江路 1518 弄',
+            }, {
+              date: '2016-05-04',
+              name: '王小虎',
+              address: '上海市普陀区金沙江路 1517 弄',
+            }, {
+              date: '2016-05-01',
+              name: '王小虎',
+              address: '上海市普陀区金沙江路 1519 弄',
+            }, {
+              date: '2016-05-03',
+              name: '王小虎',
+              address: '上海市普陀区金沙江路 1516 弄',
+            }],
+            tableDataUrl: '',
           },
         };
       }

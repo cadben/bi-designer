@@ -18,6 +18,8 @@
         @activated="onActivated(item)"
         @resizing="(x, y, w, h) => handleResize(item, x, y, w, h)"
         @dragging="(x, y, w, h) => handleDrag(item, x, y, w, h)"
+        class="default-class"
+        class-name-active="active"
       >
         <component :is="`c-${item.data.type}`" :data="item"></component>
       </vue-draggable-resizable>
@@ -29,12 +31,14 @@ import VueDraggableResizable from 'vue-draggable-resizable';
 import 'vue-draggable-resizable/dist/VueDraggableResizable.css';
 // eslint-disable-next-line import/extensions
 import CText from './editorComponent/CText';
+import CTable from './editorComponent/CTable.vue';
 
 export default {
   props: {},
   components: {
     VueDraggableResizable,
     CText,
+    CTable,
   },
   computed: {
     ...mapGetters(['editorLayout']),
@@ -93,12 +97,18 @@ export default {
   width: 100%;
   height: 100%;
   background: #fff;
+  .default-class {
+    border: 1px solid transparent;
+  }
+  .active {
+    border: 1px solid #000;
+  }
   .resize {
     border: 1px solid transparent;
     cursor: move;
   }
   .active-resize {
-    border: 1px solid #000
+    border: 1px solid #000;
   }
 }
 </style>
