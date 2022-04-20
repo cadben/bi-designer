@@ -16,6 +16,8 @@
         :is-conflict-check="true"
         :prevent-deactivation="true"
         @activated="onActivated(item)"
+        @resizing="(x, y, w, h) => handleResize(item, x, y, w, h)"
+        @dragging="(x, y, w, h) => handleDrag(item, x, y, w, h)"
       >
         <component :is="`c-${item.data.type}`" :data="item"></component>
       </vue-draggable-resizable>
@@ -59,8 +61,29 @@ export default {
       e.active = true;
     },
     onDeactivated(e) {
-      console.log(e);
       e.active = false;
+    },
+    handleDrag(e, x, y) {
+      for (let i = 0; i < this.editorLayout.length; i += 1) {
+        const element = this.editorLayout[i];
+        const { id } = element;
+        if (id === e.id) {
+          element.x = x;
+          element.y = y;
+        }
+      }
+    },
+    handleResize(e, x, y, w, h) {
+      for (let i = 0; i < this.editorLayout.length; i += 1) {
+        const element = this.editorLayout[i];
+        const { id } = element;
+        if (id === e.id) {
+          element.x = x;
+          element.y = y;
+          element.width = w;
+          element.height = h;
+        }
+      }
     },
   },
 };
