@@ -82,13 +82,24 @@
         <el-row v-if="options.tableData" class="option-row">
           <el-col :span="6" class="option-item-label">内容：</el-col>
           <el-col :span="18">
-            <el-input
+            <!-- <el-input
               type="textarea"
               :rows="10"
               v-model="curTableData"
               @blur="handleSetTableData"
             >
-            </el-input>
+            </el-input> -->
+            <codemirror
+              v-model="curTableData"
+              :options="{
+                tabSize: 2,
+                mode: 'text/javascript',
+                theme: 'base16-dark',
+                lineNumbers: true,
+                line: true,
+              }"
+              @blur="handleSetTableData"
+            />
           </el-col>
         </el-row>
       </div>
@@ -96,9 +107,15 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import { codemirror } from 'vue-codemirror';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'codemirror/lib/codemirror.css';
 
 export default {
   props: {},
+  components: {
+    codemirror,
+  },
   computed: {
     ...mapGetters(['selectCompont']),
     options() {
@@ -112,7 +129,7 @@ export default {
   },
   mounted() {
     if (this.options.tableData) {
-      this.curTableData = JSON.stringify(this.options.tableData);
+      this.curTableData = JSON.stringify(this.options.tableData, null, 2);
     }
   },
   methods: {
