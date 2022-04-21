@@ -57,7 +57,7 @@ export default new Vuex.Store({
               name: '王小虎',
               address: '上海市普陀区金沙江路 1516 弄',
             }],
-            tableDataUrl: '',
+            tableDataUrl: 'http://is.snssdk.com/api/news/feed/v51/',
           },
         };
       }

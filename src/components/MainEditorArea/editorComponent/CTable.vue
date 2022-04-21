@@ -31,14 +31,14 @@ export default {
       return this.data.data.options;
     },
     tableRes() {
-      console.log(this.options.getDataType, 'static');
-      if (this.options.getDataType === 'static') {
+      // eslint-disable-next-line no-constant-condition
+      if (true) {
         return {
           resData: this.options.tableData,
           resColumn: Object.keys(this.options.tableData[0]),
         };
       }
-      return {};
+      return [];
     },
   },
   mounted() {

@@ -79,7 +79,7 @@
             </el-select>
           </el-col>
         </el-row>
-        <el-row v-if="options.tableData" class="option-row">
+        <el-row v-if="options.tableData && options.getDataType === 'static'" class="option-row">
           <el-col :span="6" class="option-item-label">内容：</el-col>
           <el-col :span="18">
             <!-- <el-input
@@ -100,6 +100,20 @@
               }"
               @blur="handleSetTableData"
             />
+          </el-col>
+        </el-row>
+        <el-row
+          v-if="options.tableDataUrl != undefined && options.getDataType === 'get'"
+          class="option-row"
+        >
+          <el-col :span="6" class="option-item-label">API接口：</el-col>
+          <el-col :span="18">
+            <el-input
+              size="mini"
+              v-model="options.tableDataUrl"
+            >
+            </el-input>
+            <el-button @click="handleGetData" style="marginTop: 10px;">刷新数据</el-button>
           </el-col>
         </el-row>
       </div>
@@ -127,14 +141,24 @@ export default {
       curTableData: '',
     };
   },
-  mounted() {
-    if (this.options.tableData) {
-      this.curTableData = JSON.stringify(this.options.tableData, null, 2);
-    }
+  watch: {
+    options(newVal) {
+      if (newVal.tableData) {
+        this.curTableData = JSON.stringify(newVal.tableData || '', null, 2);
+      }
+    },
   },
   methods: {
     handleSetTableData() {
       this.options.tableData = JSON.parse(this.curTableData);
+    },
+    async handleGetData() {
+      // const res = await this.$axios.get(this.options.tableDataUrl);
+      this.options.tableData = [{
+        a: '你好',
+      }, {
+        a: '这就是一个测试',
+      }];
     },
   },
 };
