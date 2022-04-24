@@ -23,22 +23,26 @@
       >
         <component :is="`c-${item.data.type}`" :data="item"></component>
       </vue-draggable-resizable>
+      <div class="rightBar">
+        <div class="bar-item">删除</div>
+      </div>
     </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
 import VueDraggableResizable from 'vue-draggable-resizable';
 import 'vue-draggable-resizable/dist/VueDraggableResizable.css';
-// eslint-disable-next-line import/extensions
-import CText from './editorComponent/CText';
-import CTable from './editorComponent/CTable.vue';
+// // eslint-disable-next-line import/extensions
+import MyComponents from './editorComponent/compoents';
 
 export default {
   props: {},
   components: {
     VueDraggableResizable,
-    CText,
-    CTable,
+    // CText,
+    // CTable,
+    // CImage: CImg,
+    ...MyComponents,
   },
   computed: {
     ...mapGetters(['editorLayout']),
@@ -109,6 +113,24 @@ export default {
   }
   .active-resize {
     border: 1px solid #000;
+  }
+  .rightBar {
+    width: 120px;
+    padding: 10px 0px;
+    background-color: #fff;
+    border: 1px solid #ebeef5;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.096);
+    position: absolute;
+    .bar-item {
+      transition: 0.2s linear;
+      padding: 0px 5px;
+      &:hover {
+        cursor: pointer;
+        color: #409eff;
+        background-color: #ecf5ff;
+      }
+    }
   }
 }
 </style>

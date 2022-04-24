@@ -116,6 +116,31 @@
             <el-button @click="handleGetData" style="marginTop: 10px;">刷新数据</el-button>
           </el-col>
         </el-row>
+        <el-row v-if="options.showType" class="option-row">
+          <el-col :span="6" class="option-item-label">获取方式：</el-col>
+          <el-col :span="18">
+            <el-select
+              v-model="options.showType"
+              size="mini"
+            >
+              <el-option value="full" label="平铺" />
+              <el-option value="cover" label="拉伸" />
+            </el-select>
+          </el-col>
+        </el-row>
+        <el-row
+          v-if="options.imgUrl"
+          class="option-row"
+        >
+          <el-col :span="6" class="option-item-label">图片URL：</el-col>
+          <el-col :span="18">
+            <el-input
+              size="mini"
+              v-model="options.imgUrl"
+            >
+            </el-input>
+          </el-col>
+        </el-row>
       </div>
     </div>
 </template>

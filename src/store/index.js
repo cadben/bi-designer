@@ -60,7 +60,16 @@ export default new Vuex.Store({
             tableDataUrl: 'http://is.snssdk.com/api/news/feed/v51/',
           },
         };
+      } else if (componentName === 'image') {
+        initData = {
+          type: 'image',
+          options: {
+            imgUrl: 'https://github.com/cadben/images_store/blob/master/img/4YT4k5.png?raw=true',
+            showType: 'full',
+          },
+        };
       }
+
       const component = {
         name: `新建图层${state.editorLayout.length + 1}`,
         x: 10,
