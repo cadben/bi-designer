@@ -68,6 +68,41 @@ export default new Vuex.Store({
             showType: 'full',
           },
         };
+      } else if (componentName === 'bar') {
+        initData = {
+          type: 'bar',
+          options: {
+            getDataType: 'static',
+            chartOption: {
+              title: {
+                text: 'ECharts 入门示例',
+              },
+              chartData: [
+                {
+                  y: '5',
+                  x: '手机',
+                },
+                {
+                  y: '20',
+                  x: '电脑',
+                },
+                {
+                  y: '50',
+                  x: '笔',
+                },
+                {
+                  y: '10',
+                  x: '书本',
+                },
+                {
+                  y: '10',
+                  x: '衣服',
+                },
+              ],
+            },
+            chartDataUrl: 'http://is.snssdk.com/api/news/feed/v51/',
+          },
+        };
       }
 
       const component = {

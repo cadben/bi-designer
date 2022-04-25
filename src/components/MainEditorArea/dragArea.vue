@@ -18,12 +18,17 @@
         @activated="onActivated(item)"
         @resizing="(x, y, w, h) => handleResize(item, x, y, w, h)"
         @dragging="(x, y, w, h) => handleDrag(item, x, y, w, h)"
+        @contextmenu.prevent="handleShowRightBar(item.id)"
         class="default-class"
         class-name-active="active"
       >
-        <component :is="`c-${item.data.type}`" :data="item"></component>
+        <component
+          :is="`c-${item.data.type}`"
+          :data="item"
+        >
+        </component>
       </vue-draggable-resizable>
-      <div class="rightBar">
+      <div v-show="showRightContextId" class="rightBar">
         <div class="bar-item">删除</div>
       </div>
     </div>
@@ -48,7 +53,9 @@ export default {
     ...mapGetters(['editorLayout']),
   },
   data() {
-    return {};
+    return {
+      showRightContextId: '',
+    };
   },
   methods: {
     addComponent(e) {
@@ -93,6 +100,10 @@ export default {
         }
       }
     },
+    handleShowRightBar(id) {
+      console.log(123);
+      this.showRightContextId = id;
+    },
   },
 };
 </script>
@@ -100,7 +111,9 @@ export default {
 .dragArea {
   width: 100%;
   height: 100%;
-  background: #fff;
+  background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 10%, rgba(0, 0, 0, 0) 10%),
+  linear-gradient(360deg, rgba(50, 0, 0, 0.05) 10%, rgba(0, 0, 0, 0) 10%);
+  background-size: 20px 20px;
   .default-class {
     border: 1px solid transparent;
   }
@@ -124,7 +137,8 @@ export default {
     position: absolute;
     .bar-item {
       transition: 0.2s linear;
-      padding: 0px 5px;
+      padding: 5px 5px;
+      font-size: 13px;
       &:hover {
         cursor: pointer;
         color: #409eff;

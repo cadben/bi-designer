@@ -23,6 +23,20 @@
             </div>
           </el-collapse-item>
           <el-collapse-item title="数据展示组件" name="2">
+            <div
+              v-for="item in cList.filter(v => v.type === 'chart')"
+              :key="item.name"
+              class="component-card"
+              draggable="true"
+              @dragstart="(e) => handleDragStart(e, item)"
+            >
+              <div class="card-top">
+                {{ item.label }}
+              </div>
+              <div class="card-bottom">
+                {{ item.name }}
+              </div>
+            </div>
           </el-collapse-item>
         </el-collapse>
       </div>
@@ -52,7 +66,7 @@ export default {
           type: 'normal',
         },
         {
-          name: 'chart_1',
+          name: 'bar',
           label: '柱状图',
           type: 'chart',
         },

@@ -28,7 +28,7 @@
                 </el-input>
             </el-col>
         </el-row>
-        <el-row v-if="options.text" class="option-row">
+        <el-row v-if="options.text != undefined" class="option-row">
           <el-col :span="6" class="option-item-label">内容：</el-col>
           <el-col :span="18">
             <el-input
