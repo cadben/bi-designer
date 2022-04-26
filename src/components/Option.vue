@@ -141,12 +141,25 @@
             </el-input>
           </el-col>
         </el-row>
+        <el-row v-if="options.chartOption && options.getDataType === 'static'" class="option-row">
+          <el-col :span="6" class="option-item-label">内容：</el-col>
+          <el-col :span="18">
+            <vue-json-editor
+              v-model="options.chartOption.chartJsonData"
+              :expandedOnStart="false"
+              mode="code"
+              :show-btns="true"
+              @json-save="onJsonChange"
+            />
+          </el-col>
+        </el-row>
       </div>
     </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
 import { codemirror } from 'vue-codemirror';
+import vueJsonEditor from 'vue-json-editor';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'codemirror/lib/codemirror.css';
 
@@ -154,6 +167,7 @@ export default {
   props: {},
   components: {
     codemirror,
+    vueJsonEditor,
   },
   computed: {
     ...mapGetters(['selectCompont']),
@@ -184,6 +198,10 @@ export default {
       }, {
         a: '这就是一个测试',
       }];
+    },
+    onJsonChange(v) {
+      console.log(v);
+      this.options.chartOption.chartData = v;
     },
   },
 };

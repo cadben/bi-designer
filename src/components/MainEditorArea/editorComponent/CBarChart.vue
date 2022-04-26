@@ -31,17 +31,30 @@ export default {
     },
     BarChartOption() {
       const { chartData, title } = this.options.chartOption;
+      const yData = chartData.reduce((pre, cur) => {
+        const yName = cur['类型'];
+        const isExist = pre.find((v) => v.name === yName);
+        if (!isExist) {
+          pre.push({
+            name: yName,
+            data: [cur['数据']],
+          });
+        } else {
+          isExist.data.push(cur['数据']);
+        }
+        return pre;
+      }, []);
       return {
         title,
         tooltip: {},
         xAxis: {
-          data: chartData.map((v) => v.x),
+          data: [...new Set(chartData.map((v) => v['名称']))],
         },
         yAxis: {},
-        series: [{
+        series: yData.map((item) => ({
+          ...item,
           type: 'bar',
-          data: chartData.map((v) => v.y),
-        }],
+        })),
       };
     },
   },

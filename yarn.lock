@@ -8834,6 +8834,13 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.nlark.com/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz"
   integrity sha1-UylVzB6yCKPZkLOp+acFdGV+CPI=
 
+vue-json-editor@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.npmjs.org/vue-json-editor/-/vue-json-editor-1.4.3.tgz#004c9037ac91f16dd8fc558c9914e5f33a41d71c"
+  integrity sha512-st9HdXBgCnyEmmfWrZQiKzp4KuYXzmYVUNDn5h6Fa18MrrGS1amnyUFyv7hQFsNBDW27B7BKkdGOqszYT1srAg==
+  dependencies:
+    vue "^2.2.6"
+
 "vue-loader-v16@npm:vue-loader@^16.1.0":
   version "16.8.3"
   resolved "https://registry.npmmirror.com/vue-loader/download/vue-loader-16.8.3.tgz"
@@ -8880,7 +8887,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.nlark.com/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz?cache=0&sync_timestamp=1622604416998&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvue-template-es2015-compiler%2Fdownload%2Fvue-template-es2015-compiler-1.9.1.tgz"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@^2.6.11:
+vue@^2.2.6, vue@^2.6.11:
   version "2.6.14"
   resolved "https://registry.npmmirror.com/vue/download/vue-2.6.14.tgz"
   integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
