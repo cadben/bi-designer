@@ -1,17 +1,15 @@
 <template>
-    <el-radio-group
+    <el-select
       v-model="curValue"
       @change="handleChangeVal"
       v-bind="$attrs"
     >
-      <el-radio-button
-        v-for="item in options"
+      <el-option v-for="item in options"
         :key="item.key"
-        :label="item.key"
-      >
-        {{ item.label }}
-      </el-radio-button>
-    </el-radio-group>
+        :value="item.key"
+        :label="item.label"
+      />
+    </el-select>
 </template>
 <script>
 export default {
@@ -31,6 +29,9 @@ export default {
     return {
       curValue: this.value,
     };
+  },
+  mounted() {
+    console.log(this.options.map((v) => v.key), this.value);
   },
   methods: {
     handleChangeVal(val) {

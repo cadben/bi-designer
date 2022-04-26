@@ -21,17 +21,22 @@ export default {
   },
   components: {
   },
+  // watch: {
+  //   BarChartOption(newV) {
+  //     this.$refs.chart.setOption(newV);
+  //   },
+  // },
   computed: {
     boxStyle() {
       return {
       };
     },
     options() {
-      return this.data.data.options;
+      return this.data.data.componentData;
     },
     BarChartOption() {
-      const { chartData, title } = this.options.chartOption;
-      const yData = chartData.reduce((pre, cur) => {
+      const { chartJsonData, title } = this.options;
+      const yData = chartJsonData.reduce((pre, cur) => {
         const yName = cur['类型'];
         const isExist = pre.find((v) => v.name === yName);
         if (!isExist) {
@@ -44,11 +49,13 @@ export default {
         }
         return pre;
       }, []);
-      return {
-        title,
+      const res = {
+        title: {
+          text: title,
+        },
         tooltip: {},
         xAxis: {
-          data: [...new Set(chartData.map((v) => v['名称']))],
+          data: [...new Set(chartJsonData.map((v) => v['名称']))],
         },
         yAxis: {},
         series: yData.map((item) => ({
@@ -56,6 +63,8 @@ export default {
           type: 'bar',
         })),
       };
+      console.log(res);
+      return res;
     },
   },
   mounted() {

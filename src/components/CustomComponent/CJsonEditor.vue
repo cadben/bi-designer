@@ -1,23 +1,22 @@
 <template>
-    <el-radio-group
+    <vue-json-editor
       v-model="curValue"
-      @change="handleChangeVal"
-      v-bind="$attrs"
-    >
-      <el-radio-button
-        v-for="item in options"
-        :key="item.key"
-        :label="item.key"
-      >
-        {{ item.label }}
-      </el-radio-button>
-    </el-radio-group>
+      :expandedOnStart="false"
+      mode="code"
+      :show-btns="true"
+      @json-save="onJsonChange"
+    />
 </template>
 <script>
+import vueJsonEditor from 'vue-json-editor';
+
 export default {
+  components: {
+    vueJsonEditor,
+  },
   props: {
     value: {
-      type: String,
+      type: Array,
       require: true,
       default: null,
     },
@@ -33,7 +32,7 @@ export default {
     };
   },
   methods: {
-    handleChangeVal(val) {
+    onJsonChange(val) {
       this.$emit('input', val);
     },
   },

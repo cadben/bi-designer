@@ -26,7 +26,7 @@ export default {
       };
     },
     options() {
-      return this.data.data.options;
+      return this.data.data.componentData;
     },
   },
   mounted() {

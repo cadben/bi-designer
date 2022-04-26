@@ -28,128 +28,16 @@
                 </el-input>
             </el-col>
         </el-row>
-        <el-row v-if="options.text != undefined" class="option-row">
-          <el-col :span="6" class="option-item-label">内容：</el-col>
-          <el-col :span="18">
-            <el-input
-              type="textarea"
-              :rows="2"
-              placeholder="请输入内容"
-              v-model="options.text"
-            >
-            </el-input>
-          </el-col>
-        </el-row>
-        <el-row v-if="options.fontSize" class="option-row">
-          <el-col :span="6" class="option-item-label">字号：</el-col>
-          <el-col :span="18">
-            <el-input-number
-              type="number"
-              size="mini"
-              v-model="options.fontSize"
-              controls-position="right"
-              :min="12"
-              :max="48"
-            >
-            </el-input-number>
-          </el-col>
-        </el-row>
-        <el-row v-if="options.textAlign" class="option-row">
-          <el-col :span="6" class="option-item-label">位置：</el-col>
-          <el-col :span="18">
-            <el-radio-group
-              v-model="options.textAlign"
-              size="mini"
-            >
-              <el-radio-button label="left">左</el-radio-button>
-              <el-radio-button label="center">中</el-radio-button>
-              <el-radio-button label="right">右</el-radio-button>
-            </el-radio-group>
-          </el-col>
-        </el-row>
-        <el-row v-if="options.getDataType" class="option-row">
-          <el-col :span="6" class="option-item-label">获取方式：</el-col>
-          <el-col :span="18">
-            <el-select
-              v-model="options.getDataType"
-              size="mini"
-            >
-              <el-option value="static" label="静态数据" />
-              <el-option value="get" label="API(GET)" />
-            </el-select>
-          </el-col>
-        </el-row>
-        <el-row v-if="options.tableData && options.getDataType === 'static'" class="option-row">
-          <el-col :span="6" class="option-item-label">内容：</el-col>
-          <el-col :span="18">
-            <!-- <el-input
-              type="textarea"
-              :rows="10"
-              v-model="curTableData"
-              @blur="handleSetTableData"
-            >
-            </el-input> -->
-            <codemirror
-              v-model="curTableData"
-              :options="{
-                tabSize: 2,
-                mode: 'text/javascript',
-                theme: 'base16-dark',
-                lineNumbers: true,
-                line: true,
-              }"
-              @blur="handleSetTableData"
-            />
-          </el-col>
-        </el-row>
-        <el-row
-          v-if="options.tableDataUrl != undefined && options.getDataType === 'get'"
+        <el-row v-for="item in componentOptions"
+          :key="item.style_id"
           class="option-row"
         >
-          <el-col :span="6" class="option-item-label">API接口：</el-col>
+          <el-col :span="6" class="option-item-label">{{ item.style_label }}：</el-col>
           <el-col :span="18">
-            <el-input
-              size="mini"
-              v-model="options.tableDataUrl"
-            >
-            </el-input>
-            <el-button @click="handleGetData" style="marginTop: 10px;">刷新数据</el-button>
-          </el-col>
-        </el-row>
-        <el-row v-if="options.showType" class="option-row">
-          <el-col :span="6" class="option-item-label">获取方式：</el-col>
-          <el-col :span="18">
-            <el-select
-              v-model="options.showType"
-              size="mini"
-            >
-              <el-option value="full" label="平铺" />
-              <el-option value="cover" label="拉伸" />
-            </el-select>
-          </el-col>
-        </el-row>
-        <el-row
-          v-if="options.imgUrl"
-          class="option-row"
-        >
-          <el-col :span="6" class="option-item-label">图片URL：</el-col>
-          <el-col :span="18">
-            <el-input
-              size="mini"
-              v-model="options.imgUrl"
-            >
-            </el-input>
-          </el-col>
-        </el-row>
-        <el-row v-if="options.chartOption && options.getDataType === 'static'" class="option-row">
-          <el-col :span="6" class="option-item-label">内容：</el-col>
-          <el-col :span="18">
-            <vue-json-editor
-              v-model="options.chartOption.chartJsonData"
-              :expandedOnStart="false"
-              mode="code"
-              :show-btns="true"
-              @json-save="onJsonChange"
+            <component
+              :is="item.component"
+              v-model="options[item.style_id]"
+              v-bind="item.componentAttr"
             />
           </el-col>
         </el-row>
@@ -160,19 +48,26 @@
 import { mapGetters } from 'vuex';
 import { codemirror } from 'vue-codemirror';
 import vueJsonEditor from 'vue-json-editor';
+import CustomComponents from './CustomComponent/index';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'codemirror/lib/codemirror.css';
 
 export default {
   props: {},
   components: {
+    // eslint-disable-next-line vue/no-unused-components
     codemirror,
+    // eslint-disable-next-line vue/no-unused-components
     vueJsonEditor,
+    ...CustomComponents,
   },
   computed: {
     ...mapGetters(['selectCompont']),
     options() {
-      return this.selectCompont ? this.selectCompont.data.options : null;
+      return this.selectCompont ? this.selectCompont.data.componentData : null;
+    },
+    componentOptions() {
+      return this.selectCompont ? this.selectCompont.data.componentStyle : null;
     },
   },
   data() {

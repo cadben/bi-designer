@@ -28,7 +28,7 @@ export default {
       };
     },
     options() {
-      return this.data.data.options;
+      return this.data.data.componentData;
     },
     tableRes() {
       // eslint-disable-next-line no-constant-condition

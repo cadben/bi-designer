@@ -21,22 +21,20 @@ export default {
   computed: {
     boxStyle() {
       const {
-        color,
+        // color,
         fontSize,
-        fontFamily,
-        bold,
+        // bold,
         textAlign,
       } = this.options;
       return {
-        color,
+        // color,
         fontSize: `${fontSize}px`,
-        fontFamily,
-        fontWeight: bold ? 'bold' : 'normal',
+        // fontWeight: bold ? 'bold' : 'normal',
         textAlign,
       };
     },
     options() {
-      return this.data.data.options;
+      return this.data.data.componentData;
     },
   },
   mounted() {
