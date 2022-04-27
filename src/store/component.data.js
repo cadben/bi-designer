@@ -14,58 +14,8 @@ export const IMAGE_DATA = {
 
 export const BAR_CHART_DATA = {
   title: 'ECharts 入门示例',
-  // chartData: [
-  //   {
-  //     数据: '52',
-  //     类型: '上海销量',
-  //     名称: '手机',
-  //   },
-  //   {
-  //     数据: '220',
-  //     类型: '上海销量',
-  //     名称: '电脑',
-  //   },
-  //   {
-  //     数据: '120',
-  //     类型: '上海销量',
-  //     名称: '笔',
-  //   },
-  //   {
-  //     数据: '120',
-  //     类型: '上海销量',
-  //     名称: '书本',
-  //   },
-  //   {
-  //     数据: '120',
-  //     类型: '上海销量',
-  //     名称: '衣服',
-  //   },
-  //   {
-  //     数据: '125',
-  //     类型: '杭州销量',
-  //     名称: '手机',
-  //   },
-  //   {
-  //     数据: '120',
-  //     类型: '杭州销量',
-  //     名称: '电脑',
-  //   },
-  //   {
-  //     数据: '150',
-  //     类型: '杭州销量',
-  //     名称: '笔',
-  //   },
-  //   {
-  //     数据: '110',
-  //     类型: '杭州销量',
-  //     名称: '书本',
-  //   },
-  //   {
-  //     数据: '110',
-  //     类型: '杭州销量',
-  //     名称: '衣服',
-  //   },
-  // ],
+  getDataType: 'static',
+  tableDataUrl: 'https://www.fastmock.site/mock/cbee0e873d12658de056a6d54a997a11/bi/api/bardata',
   chartJsonData: [
     {
       数据: '52',
@@ -145,6 +95,8 @@ export const TABLE_DATA = {
 
 export const LINE_DATA = {
   title: 'ECharts 入门示例',
+  getDataType: 'static',
+  tableDataUrl: 'https://www.fastmock.site/mock/cbee0e873d12658de056a6d54a997a11/bi/api/bardata',
   chartJsonData: [
     {
       数据: '52',

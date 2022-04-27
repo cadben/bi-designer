@@ -14,11 +14,19 @@
               draggable="true"
               @dragstart="(e) => handleDragStart(e, item)"
             >
-              <div class="card-top">
-                {{ item.label }}
+              <div class="card-top"
+                :style="{
+                  width: '100%',
+                  height: '100%',
+                  background: `url(${item.imgSrc})`,
+                  backgroundSize: '40%',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                }"
+              >
               </div>
               <div class="card-bottom">
-                {{ item.name }}
+                {{ item.label }}
               </div>
             </div>
           </el-collapse-item>
@@ -30,11 +38,19 @@
               draggable="true"
               @dragstart="(e) => handleDragStart(e, item)"
             >
-              <div class="card-top">
-                {{ item.label }}
+              <div class="card-top"
+                :style="{
+                  width: '100%',
+                  height: '100%',
+                  background: `url(${item.imgSrc})`,
+                  backgroundSize: 'contain',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                }"
+              >
               </div>
               <div class="card-bottom">
-                {{ item.name }}
+                {{ item.label }}
               </div>
             </div>
           </el-collapse-item>
@@ -54,26 +70,31 @@ export default {
           name: 'text',
           label: '文本框',
           type: 'normal',
+          imgSrc: 'https://files.catbox.moe/1twxfx.png',
         },
         {
           name: 'table',
           label: '表格',
           type: 'normal',
+          imgSrc: 'https://files.catbox.moe/1y28ah.png',
         },
         {
           name: 'image',
           label: '图片',
           type: 'normal',
+          imgSrc: 'https://files.catbox.moe/x6t4mg.png',
         },
         {
           name: 'bar',
           label: '柱状图',
           type: 'chart',
+          imgSrc: 'https://files.catbox.moe/7ysplh.png',
         },
         {
           name: 'line',
           label: '折线图',
           type: 'chart',
+          imgSrc: 'https://files.catbox.moe/oscqah.png',
         },
       ],
     };
@@ -87,7 +108,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .components-box {
-  width: 350px;
+  width: 355px;
   box-shadow: 4px 0px 6px rgba(221, 221, 221, 0.726);
   .header-logo {
     padding: 20px;
@@ -111,22 +132,26 @@ export default {
       flex-wrap: wrap;
     }
     .component-card {
-      width: 90px;
-      height: 90px;
+      width: 145px;
+      height: 98px;
       display: flex;
       margin-right: 11px;
       margin-bottom: 20px;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      border: .02666667rem solid #ebedf0;
       transition: 0.2s linear;
       cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 0 5px 0 #dcdade;
+      border-radius: 4px;
       &:hover {
-        border-color: transparent;
         box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 16%),
         0 3px 6px 0 rgba(0, 0, 0, 12%),
         0 5px 12px 4px rgba(0, 0, 0, 9%);
+        .card-top {
+          transform: scale(1.2);
+        }
       }
       &:last-child {
         margin-right: auto;
@@ -136,9 +161,11 @@ export default {
         color: #000;
         font-family:'Gill Sans', 'Gill Sans MT',
         Calibri, 'Trebuchet MS', sans-serif;
+        transition: 0.2s linear;
       }
       .card-bottom {
-        color: #aaaaaa;
+        padding: 5px 0px;
+        color: #5c5b5b;
       }
     }
   }

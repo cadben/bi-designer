@@ -26,11 +26,15 @@ export default {
 };
 </script>
 <style lang="less">
+html {
+  height: 100%;
+}
 body {
+  height: 100%;
   margin: 0px;
 }
 #app {
-  height: 100vh;
+  height: 100%;
   .editor-work {
     display: flex;
     height: 100%;

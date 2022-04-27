@@ -1,10 +1,10 @@
 <template>
     <div
-      class="barchart-box"
+      class="linechart-box"
       :style="boxStyle"
     >
         <v-chart ref="chart" class="main"
-          :option="BarChartOption"
+          :option="options.getDataType === 'static' ? BarChartOption : apiData"
           :autoresize="true">
         </v-chart>
     </div>
@@ -21,6 +21,26 @@ export default {
   },
   components: {
   },
+  watch: {
+    // eslint-disable-next-line func-names
+    'options.getDataType': function (newV) {
+      if (newV === 'get') {
+        this.$axios.get(this.options.tableDataUrl).then((res) => {
+          const showRes = this.initEchart(res.data);
+          this.apiData = showRes;
+        });
+      }
+    },
+    // eslint-disable-next-line func-names
+    'options.tableDataUrl': function (newUrl) {
+      if (this.options.getDataType === 'get') {
+        this.$axios.get(newUrl).then((res) => {
+          const showRes = this.initEchart(res.data);
+          this.apiData = showRes;
+        });
+      }
+    },
+  },
   computed: {
     boxStyle() {
       return {
@@ -30,8 +50,20 @@ export default {
       return this.data.data.componentData;
     },
     BarChartOption() {
-      const { chartJsonData, title } = this.options;
-      const yData = chartJsonData.reduce((pre, cur) => {
+      const { chartJsonData } = this.options;
+      const res = this.initEchart(chartJsonData);
+      return res;
+    },
+  },
+  data() {
+    return {
+      apiData: [],
+    };
+  },
+  methods: {
+    initEchart(chartdata) {
+      const { title } = this.options;
+      const yData = chartdata.reduce((pre, cur) => {
         const yName = cur['类型'];
         const isExist = pre.find((v) => v.name === yName);
         if (!isExist) {
@@ -50,7 +82,7 @@ export default {
         },
         tooltip: {},
         xAxis: {
-          data: [...new Set(chartJsonData.map((v) => v['名称']))],
+          data: [...new Set(chartdata.map((v) => v['名称']))],
         },
         yAxis: {},
         series: yData.map((item) => ({
@@ -61,18 +93,10 @@ export default {
       return res;
     },
   },
-  data() {
-    return {
-    };
-  },
-  methods: {
-    initEchart() {
-    },
-  },
 };
 </script>
 <style lang="less" scoped>
-.barchart-box {
+.linechart-box {
   caret-color: transparent;
   overflow: auto;
   height: 100%;
