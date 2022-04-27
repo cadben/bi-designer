@@ -5,6 +5,7 @@ import ECharts from 'vue-echarts';
 import { use } from 'echarts/core';
 import {
   BarChart,
+  LineChart,
 } from 'echarts/charts';
 import {
   CanvasRenderer,
@@ -12,6 +13,7 @@ import {
 import {
   GridComponent,
   TooltipComponent,
+  TitleComponent,
 } from 'echarts/components';
 import App from './App.vue';
 import router from './router';
@@ -23,6 +25,8 @@ use([
   BarChart,
   GridComponent,
   TooltipComponent,
+  LineChart,
+  TitleComponent,
 ]);
 
 Vue.component('v-chart', ECharts);

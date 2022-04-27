@@ -21,11 +21,6 @@ export default {
   },
   components: {
   },
-  // watch: {
-  //   BarChartOption(newV) {
-  //     this.$refs.chart.setOption(newV);
-  //   },
-  // },
   computed: {
     boxStyle() {
       return {
@@ -60,14 +55,11 @@ export default {
         yAxis: {},
         series: yData.map((item) => ({
           ...item,
-          type: 'bar',
+          type: 'line',
         })),
       };
       return res;
     },
-  },
-  mounted() {
-    // this.initEchart();
   },
   data() {
     return {

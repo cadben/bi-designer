@@ -70,6 +70,11 @@ export default {
           label: '柱状图',
           type: 'chart',
         },
+        {
+          name: 'line',
+          label: '折线图',
+          type: 'chart',
+        },
       ],
     };
   },

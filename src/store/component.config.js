@@ -3,12 +3,14 @@ import {
   IMAGE_DATA,
   BAR_CHART_DATA,
   TABLE_DATA,
+  LINE_DATA,
 } from './component.data';
 import {
   IMAGE_STYLE,
   TEXT_STYLE,
   BAR_CHART_STYLE,
   TABLE_STYLE,
+  LINE_CHART_STYLE,
 } from './component.style';
 
 export const TEXT = {
@@ -72,5 +74,21 @@ export const TABLE = {
     type: 'table',
     componentStyle: TABLE_STYLE,
     componentData: TABLE_DATA,
+  },
+};
+
+export const LINE = {
+  name: '',
+  x: 0,
+  y: 0,
+  width: 0,
+  height: 0,
+  bgcolor: '',
+  active: false,
+  id: Math.random(),
+  data: {
+    type: 'line',
+    componentStyle: LINE_CHART_STYLE,
+    componentData: LINE_DATA,
   },
 };

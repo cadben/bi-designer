@@ -114,3 +114,18 @@ export const TABLE_STYLE = [{
     size: 'mini',
   },
 }];
+
+export const LINE_CHART_STYLE = [{
+  style_label: '标题',
+  style_id: 'title',
+  component: 'el-input',
+  componentAttr: {
+    size: 'mini',
+  },
+}, {
+  style_label: '内容',
+  style_id: 'chartJsonData',
+  component: 'c-json-editor',
+  componentAttr: {
+  },
+}];
