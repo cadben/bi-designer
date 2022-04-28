@@ -76,35 +76,37 @@ export const BAR_CHART_STYLE = [{
     size: 'mini',
   },
 }, {
-  style_label: '获取数据',
-  style_id: 'getDataType',
-  component: 'c-select-group',
-  componentAttr: {
-    size: 'mini',
-    options: [
-      {
-        key: 'static',
-        label: '静态数据',
+  style_label: '数据设置',
+  style_id: 'dataOptions',
+  component: 'c-get-data-component',
+  childComponent:
+    {
+      getDataType: {
+        label: '获取数据',
+        componentAttr: {
+          size: 'mini',
+          options: [
+            {
+              key: 'static',
+              label: '静态数据',
+            },
+            {
+              key: 'get',
+              label: 'API(GET)',
+            },
+          ],
+        },
       },
-      {
-        key: 'get',
-        label: 'API(GET)',
+      chartJsonData: {
+        label: '内容',
       },
-    ],
-  },
-}, {
-  style_label: '内容',
-  style_id: 'chartJsonData',
-  component: 'c-json-editor',
-  componentAttr: {
-  },
-}, {
-  style_label: '数据接口',
-  style_id: 'tableDataUrl',
-  component: 'el-input',
-  componentAttr: {
-    size: 'mini',
-  },
+      tableDataUrl: {
+        label: '数据接口',
+        componentAttr: {
+          size: 'mini',
+        },
+      },
+    },
 }];
 
 export const TABLE_STYLE = [{
@@ -147,35 +149,37 @@ export const LINE_CHART_STYLE = [{
     size: 'mini',
   },
 }, {
-  style_label: '获取数据',
-  style_id: 'getDataType',
-  component: 'c-select-group',
-  componentAttr: {
-    size: 'mini',
-    options: [
-      {
-        key: 'static',
-        label: '静态数据',
+  style_label: '数据设置',
+  style_id: 'dataOptions',
+  component: 'c-get-data-component',
+  childComponent:
+    {
+      getDataType: {
+        label: '获取数据',
+        componentAttr: {
+          size: 'mini',
+          options: [
+            {
+              key: 'static',
+              label: '静态数据',
+            },
+            {
+              key: 'get',
+              label: 'API(GET)',
+            },
+          ],
+        },
       },
-      {
-        key: 'get',
-        label: 'API(GET)',
+      chartJsonData: {
+        label: '内容',
       },
-    ],
-  },
-}, {
-  style_label: '内容',
-  style_id: 'chartJsonData',
-  component: 'c-json-editor',
-  componentAttr: {
-  },
-}, {
-  style_label: '数据接口',
-  style_id: 'tableDataUrl',
-  component: 'el-input',
-  componentAttr: {
-    size: 'mini',
-  },
+      tableDataUrl: {
+        label: '数据接口',
+        componentAttr: {
+          size: 'mini',
+        },
+      },
+    },
 }];
 
 export const PIE_CHART_STYLE = [{
@@ -186,33 +190,35 @@ export const PIE_CHART_STYLE = [{
     size: 'mini',
   },
 }, {
-  style_label: '获取数据',
-  style_id: 'getDataType',
-  component: 'c-select-group',
-  componentAttr: {
-    size: 'mini',
-    options: [
-      {
-        key: 'static',
-        label: '静态数据',
+  style_label: '数据设置',
+  style_id: 'dataOptions',
+  component: 'c-get-data-component',
+  childComponent:
+    {
+      getDataType: {
+        label: '获取数据',
+        componentAttr: {
+          size: 'mini',
+          options: [
+            {
+              key: 'static',
+              label: '静态数据',
+            },
+            {
+              key: 'get',
+              label: 'API(GET)',
+            },
+          ],
+        },
       },
-      {
-        key: 'get',
-        label: 'API(GET)',
+      chartJsonData: {
+        label: '内容',
       },
-    ],
-  },
-}, {
-  style_label: '内容',
-  style_id: 'chartJsonData',
-  component: 'c-json-editor',
-  componentAttr: {
-  },
-}, {
-  style_label: '数据接口',
-  style_id: 'tableDataUrl',
-  component: 'el-input',
-  componentAttr: {
-    size: 'mini',
-  },
+      tableDataUrl: {
+        label: '数据接口',
+        componentAttr: {
+          size: 'mini',
+        },
+      },
+    },
 }];

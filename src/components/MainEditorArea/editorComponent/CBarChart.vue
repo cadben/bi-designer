@@ -4,7 +4,7 @@
       :style="boxStyle"
     >
         <v-chart ref="chart" class="main"
-          :option="options.getDataType === 'static' ? BarChartOption : apiData"
+          :option="chartOptions.getDataType === 'static' ? BarChartOption : apiData"
           :autoresize="true">
         </v-chart>
     </div>
@@ -15,7 +15,7 @@ export default {
   props: {
     data: {
       type: Object,
-      require: true,
+      require: false,
       default: null,
     },
   },
@@ -23,17 +23,17 @@ export default {
   },
   watch: {
     // eslint-disable-next-line func-names
-    'options.getDataType': function (newV) {
+    'chartOptions.getDataType': function (newV) {
       if (newV === 'get') {
-        this.$axios.get(this.options.tableDataUrl).then((res) => {
+        this.$axios.get(this.chartOptions.tableDataUrl).then((res) => {
           const showRes = this.initEchart(res.data);
           this.apiData = showRes;
         });
       }
     },
     // eslint-disable-next-line func-names
-    'options.tableDataUrl': function (newUrl) {
-      if (this.options.getDataType === 'get') {
+    'chartOptions.tableDataUrl': function (newUrl) {
+      if (this.chartOptions.getDataType === 'get') {
         this.$axios.get(newUrl).then((res) => {
           const showRes = this.initEchart(res.data);
           this.apiData = showRes;
@@ -46,23 +46,26 @@ export default {
       return {
       };
     },
-    options() {
+    normalOptiosn() {
       return this.data.data.componentData;
     },
+    chartOptions() {
+      return this.data.data.componentData.dataOptions;
+    },
     BarChartOption() {
-      const { chartJsonData } = this.options;
+      const { chartJsonData } = this.chartOptions;
       const res = this.initEchart(chartJsonData);
       return res;
     },
   },
   data() {
     return {
-      apiData: [],
+      apiData: {},
     };
   },
   methods: {
     initEchart(chartdata) {
-      const { title } = this.options;
+      const { title } = this.normalOptiosn;
       const yData = chartdata.reduce((pre, cur) => {
         const yName = cur['类型'];
         const isExist = pre.find((v) => v.name === yName);

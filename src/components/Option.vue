@@ -28,16 +28,31 @@
                 </el-input>
             </el-col>
         </el-row>
-        <el-row v-for="item in componentOptions"
+        <el-row v-for="item in componentOptions.filter((v) => !v.childComponent)"
           :key="item.style_id"
           class="option-row"
         >
-          <el-col :span="6" class="option-item-label">{{ item.style_label }}：</el-col>
+          <el-col
+            :span="6"
+            class="option-item-label"
+          >{{ item.style_label }}：</el-col>
           <el-col :span="18">
             <component
               :is="item.component"
               v-model="options[item.style_id]"
               v-bind="item.componentAttr"
+            />
+          </el-col>
+        </el-row>
+        <el-row v-for="item in componentOptions.filter((v) => v.childComponent)"
+          :key="item.style_id"
+          class="option-row"
+        >
+          <el-col :span="24">
+            <component
+              :is="item.component"
+              v-model="options[item.style_id]"
+              :typeOptions="item.childComponent"
             />
           </el-col>
         </el-row>
