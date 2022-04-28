@@ -96,6 +96,18 @@ export default {
           type: 'chart',
           imgSrc: 'https://files.catbox.moe/oscqah.png',
         },
+        {
+          name: 'pie',
+          label: '饼图',
+          type: 'chart',
+          imgSrc: 'https://files.catbox.moe/4hdyi8.png',
+        },
+        {
+          name: 'area',
+          label: '面积图',
+          type: 'chart',
+          imgSrc: 'https://files.catbox.moe/yg14bl.png',
+        },
       ],
     };
   },

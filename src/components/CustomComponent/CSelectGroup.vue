@@ -30,9 +30,6 @@ export default {
       curValue: this.value,
     };
   },
-  mounted() {
-    console.log(this.options.map((v) => v.key), this.value);
-  },
   methods: {
     handleChangeVal(val) {
       this.$emit('input', val);

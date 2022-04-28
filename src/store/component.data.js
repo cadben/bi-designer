@@ -150,3 +150,31 @@ export const LINE_DATA = {
     },
   ],
 };
+
+export const PIE_CHART_DATA = {
+  title: 'ECharts 入门示例',
+  getDataType: 'static',
+  tableDataUrl: 'https://www.fastmock.site/mock/cbee0e873d12658de056a6d54a997a11/bi/api/pie',
+  chartJsonData: [
+    {
+      数据: '52',
+      名称: '手机',
+    },
+    {
+      数据: '220',
+      名称: '电脑',
+    },
+    {
+      数据: '120',
+      名称: '笔',
+    },
+    {
+      数据: '120',
+      名称: '书本',
+    },
+    {
+      数据: '120',
+      名称: '衣服',
+    },
+  ],
+};

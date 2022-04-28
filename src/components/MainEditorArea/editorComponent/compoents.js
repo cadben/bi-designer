@@ -3,6 +3,7 @@ import CTable from './CTable.vue';
 import CImg from './CImg.vue';
 import CBarChart from './CBarChart.vue';
 import CLineChart from './CLineChart.vue';
+import CPieChart from './CPieChart.vue';
 
 export default {
   CTable,
@@ -10,4 +11,5 @@ export default {
   CImage: CImg,
   CBar: CBarChart,
   CLine: CLineChart,
+  CPie: CPieChart,
 };

@@ -4,6 +4,7 @@ import {
   BAR_CHART_DATA,
   TABLE_DATA,
   LINE_DATA,
+  PIE_CHART_DATA,
 } from './component.data';
 import {
   IMAGE_STYLE,
@@ -11,6 +12,7 @@ import {
   BAR_CHART_STYLE,
   TABLE_STYLE,
   LINE_CHART_STYLE,
+  PIE_CHART_STYLE,
 } from './component.style';
 
 export const TEXT = {
@@ -90,5 +92,21 @@ export const LINE = {
     type: 'line',
     componentStyle: LINE_CHART_STYLE,
     componentData: LINE_DATA,
+  },
+};
+
+export const PIE = {
+  name: '',
+  x: 0,
+  y: 0,
+  width: 0,
+  height: 0,
+  bgcolor: '',
+  active: false,
+  id: Math.random(),
+  data: {
+    type: 'pie',
+    componentStyle: PIE_CHART_STYLE,
+    componentData: PIE_CHART_DATA,
   },
 };
