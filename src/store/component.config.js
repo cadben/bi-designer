@@ -5,6 +5,7 @@ import {
   TABLE_DATA,
   LINE_DATA,
   PIE_CHART_DATA,
+  AREA_CHART_DATA,
 } from './component.data';
 import {
   IMAGE_STYLE,
@@ -13,6 +14,7 @@ import {
   TABLE_STYLE,
   LINE_CHART_STYLE,
   PIE_CHART_STYLE,
+  AREA_CHART_STYLE,
 } from './component.style';
 
 export const TEXT = {
@@ -108,5 +110,21 @@ export const PIE = {
     type: 'pie',
     componentStyle: PIE_CHART_STYLE,
     componentData: PIE_CHART_DATA,
+  },
+};
+
+export const AREA = {
+  name: '',
+  x: 0,
+  y: 0,
+  width: 0,
+  height: 0,
+  bgcolor: '',
+  active: false,
+  id: Math.random(),
+  data: {
+    type: 'area',
+    componentStyle: AREA_CHART_STYLE,
+    componentData: AREA_CHART_DATA,
   },
 };

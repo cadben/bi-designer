@@ -1,5 +1,5 @@
 <template>
-    <div v-if="selectCompont && selectCompont.id" class="option-editor">
+    <div v-if="selectCompont && selectCompont.id" :key="selectCompont.id" class="option-editor">
       <h3>组件设置</h3>
       <div class="options-list">
         <el-row :gutter="20" class="option-row">
