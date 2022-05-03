@@ -18,7 +18,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    handleAddComponent({ commit, state }, componentName) {
+    handleAddComponent({ commit, state }, { componentName, x, y }) {
       if (!componentName) {
         return;
       }
@@ -26,8 +26,8 @@ export default new Vuex.Store({
       const component = {
         ...newObject,
         name: `新建图层${state.editorLayout.length + 1}`,
-        x: 10,
-        y: 10,
+        x: x || 10,
+        y: y || 10,
         width: 400,
         height: 200,
         bgcolor: 'rgba(0,0,0,0)',

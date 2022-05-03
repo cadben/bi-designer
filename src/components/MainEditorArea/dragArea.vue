@@ -60,7 +60,12 @@ export default {
   methods: {
     addComponent(e) {
       const componentName = e.dataTransfer.getData('componentId');
-      this.$store.dispatch('handleAddComponent', componentName);
+      const { offsetX, offsetY } = e;
+      this.$store.dispatch('handleAddComponent', {
+        componentName,
+        x: offsetX,
+        y: offsetY,
+      });
     },
     onActivated(e) {
       this.editorLayout.forEach((element) => {
