@@ -1,7 +1,17 @@
 <template>
-    <div v-if="selectCompont && selectCompont.id" :key="selectCompont.id" class="option-editor">
+    <div
+      v-if="editorLayout.length && selectCompont && selectCompont.id" :key="selectCompont.id"
+      class="option-editor"
+    >
       <h3>组件设置</h3>
       <div class="options-list">
+        <el-row :gutter="20" class="option-row">
+            <el-col :span="6" class="option-item-label">组件名称：</el-col>
+            <el-col :span="18">
+                <el-input v-model.number="selectCompont.name" size="mini">
+                </el-input>
+            </el-col>
+        </el-row>
         <el-row :gutter="20" class="option-row">
             <el-col :span="6" class="option-item-label">组件位置：</el-col>
             <el-col :span="9">
@@ -77,7 +87,7 @@ export default {
     ...CustomComponents,
   },
   computed: {
-    ...mapGetters(['selectCompont']),
+    ...mapGetters(['editorLayout', 'selectCompont']),
     options() {
       return this.selectCompont ? this.selectCompont.data.componentData : null;
     },
@@ -92,7 +102,7 @@ export default {
   },
   watch: {
     options(newVal) {
-      if (newVal.tableData) {
+      if (newVal && newVal.tableData) {
         this.curTableData = JSON.stringify(newVal.tableData || '', null, 2);
       }
     },
