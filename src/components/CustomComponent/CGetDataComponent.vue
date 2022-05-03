@@ -70,7 +70,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.value, this.typeOptions);
   },
   methods: {
     onJsonChange(val) {

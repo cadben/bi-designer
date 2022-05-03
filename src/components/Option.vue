@@ -110,7 +110,6 @@ export default {
       }];
     },
     onJsonChange(v) {
-      console.log(v);
       this.options.chartOption.chartData = v;
     },
   },

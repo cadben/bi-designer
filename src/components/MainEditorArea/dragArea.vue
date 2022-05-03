@@ -106,7 +106,6 @@ export default {
       }
     },
     handleShowRightBar(id) {
-      console.log(123);
       this.showRightContextId = id;
     },
   },
