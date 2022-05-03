@@ -51,7 +51,7 @@ export default {
   position: absolute;
   .bar-item {
     transition: 0.2s linear;
-    padding: 5px 5px;
+    padding: 10px 15px;
     font-size: 13px;
     &:hover {
       cursor: pointer;

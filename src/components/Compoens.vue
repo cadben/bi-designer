@@ -6,54 +6,54 @@
       <div class="container">
         <div class="container-header">组件库</div>
         <el-collapse>
-          <el-collapse-item title="基础组件" name="1">
-            <div
-              v-for="item in cList.filter(v => v.type === 'normal')"
-              :key="item.name"
-              class="component-card"
-              draggable="true"
-              @dragstart="(e) => handleDragStart(e, item)"
-            >
-              <div class="card-top"
-                :style="{
-                  width: '100%',
-                  height: '100%',
-                  background: `url(${item.imgSrc})`,
-                  backgroundSize: '40%',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                }"
+            <el-collapse-item title="基础组件" name="1">
+              <div
+                v-for="item in cList.filter(v => v.type === 'normal')"
+                :key="item.name"
+                class="component-card"
+                draggable="true"
+                @dragstart="(e) => handleDragStart(e, item)"
               >
+                <div class="card-top"
+                  :style="{
+                    width: '100%',
+                    height: '100%',
+                    background: `url(${item.imgSrc})`,
+                    backgroundSize: '40%',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                  }"
+                >
+                </div>
+                <div class="card-bottom">
+                  {{ item.label }}
+                </div>
               </div>
-              <div class="card-bottom">
-                {{ item.label }}
-              </div>
-            </div>
-          </el-collapse-item>
-          <el-collapse-item title="数据展示组件" name="2">
-            <div
-              v-for="item in cList.filter(v => v.type === 'chart')"
-              :key="item.name"
-              class="component-card"
-              draggable="true"
-              @dragstart="(e) => handleDragStart(e, item)"
-            >
-              <div class="card-top"
-                :style="{
-                  width: '100%',
-                  height: '100%',
-                  background: `url(${item.imgSrc})`,
-                  backgroundSize: 'contain',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                }"
+            </el-collapse-item>
+            <el-collapse-item title="数据展示组件" name="2">
+              <div
+                v-for="item in cList.filter(v => v.type === 'chart')"
+                :key="item.name"
+                class="component-card"
+                draggable="true"
+                @dragstart="(e) => handleDragStart(e, item)"
               >
+                <div class="card-top"
+                  :style="{
+                    width: '100%',
+                    height: '100%',
+                    background: `url(${item.imgSrc})`,
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                  }"
+                >
+                </div>
+                <div class="card-bottom">
+                  {{ item.label }}
+                </div>
               </div>
-              <div class="card-bottom">
-                {{ item.label }}
-              </div>
-            </div>
-          </el-collapse-item>
+            </el-collapse-item>
         </el-collapse>
       </div>
     </div>
@@ -70,19 +70,19 @@ export default {
           name: 'text',
           label: '文本框',
           type: 'normal',
-          imgSrc: '',
+          imgSrc: 'http://rb6rk8283.hd-bkt.clouddn.com/editor/%E6%96%87%E6%9C%AC.png',
         },
         {
           name: 'table',
           label: '表格',
           type: 'normal',
-          imgSrc: '',
+          imgSrc: 'http://rb6rk8283.hd-bkt.clouddn.com/editor%2F%E8%A1%A8%E6%A0%BC.png',
         },
         {
           name: 'image',
           label: '图片',
           type: 'normal',
-          imgSrc: '',
+          imgSrc: 'http://rb6rk8283.hd-bkt.clouddn.com/editor/%E5%9B%BE%E7%89%87.png',
         },
         {
           name: 'bar',
