@@ -13,6 +13,12 @@
             </el-col>
         </el-row>
         <el-row :gutter="20" class="option-row">
+            <el-col :span="6" class="option-item-label">背景颜色：</el-col>
+            <el-col :span="18">
+                <c-color-picker v-model="selectCompont.bgcolor"></c-color-picker>
+            </el-col>
+        </el-row>
+        <el-row :gutter="20" class="option-row">
             <el-col :span="6" class="option-item-label">组件位置：</el-col>
             <el-col :span="9">
                 <el-input v-model.number="selectCompont.x" size="mini">
