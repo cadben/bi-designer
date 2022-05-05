@@ -1,19 +1,21 @@
 <template>
   <div class="color-picker">
     <el-popover
-      v-model="currentColor"
+      v-model="showPickColor"
       placement="bottom"
-      width="254"
       trigger="manual"
+      popper-class="color-popover"
     >
       <sketch-pick
-        :model="currentColor"
+        :value="currentColor"
         :preset-colors="presetColors"
+        @input="handleChangeColor"
       >
       </sketch-pick>
-      <span slot="reference" @click="handleShowColorPicker">
-        选择颜色
-        <div class="color-preview" :style="`backgroundColor: ${currentColor}`"></div>
+      <span
+        slot="reference"
+        @click="handleShowColorPicker"
+        class="color-preview" :style="`backgroundColor: ${currentColor}`">
       </span>
     </el-popover>
   </div>
@@ -36,18 +38,35 @@ export default {
     return {
       currentColor: this.value,
       showPickColor: false,
-      presetColors: ['#D20000', '#FF0000', '#FFA200', '#EBDF00', '#7ED332', '#00B442'],
+      presetColors: ['#D20000', '#FF0000', '#FFA200', '#EBDF00', '#7ED332', '#00B442', '#010192', '#fff192'],
     };
   },
   methods: {
-    handleShowColorPicker() {
+    handleShowColorPicker(e) {
+      e.stopPropagation();
       this.showPickColor = true;
+      document.addEventListener('click', () => {
+        this.showPickColor = false;
+      });
+    },
+    handleChangeColor(color) {
+      const { hex8 } = color;
+      this.currentColor = hex8;
+      this.$emit('input', hex8);
     },
   },
 };
 </script>
 
-<style>
-/* .color-picker {
-} */
+<style lang="less">
+.color-popover {
+  padding: 0px;
+}
+.color-preview {
+  display: block;
+  width: 80px;
+  height: 20px;
+  border: 2px solid rgba(102, 102, 102, 0.747);
+  caret-color: transparent;
+}
 </style>

@@ -34,7 +34,7 @@ export default new Vuex.Store({
         y: y || 10,
         width: 400,
         height: 200,
-        bgcolor: '#ffffff',
+        bgcolor: '#fff',
         active: false,
         id: uuid(),
       };

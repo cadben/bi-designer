@@ -26,11 +26,13 @@ export default {
         // bold,
         textAlign,
       } = this.options;
+      const { bgcolor } = this.data;
       return {
         // color,
         fontSize: `${fontSize}px`,
         // fontWeight: bold ? 'bold' : 'normal',
         textAlign,
+        backgroundColor: bgcolor,
       };
     },
     options() {

@@ -43,7 +43,9 @@ export default {
   },
   computed: {
     boxStyle() {
+      const { bgcolor } = this.data;
       return {
+        backgroundColor: bgcolor,
       };
     },
     normalOptiosn() {
