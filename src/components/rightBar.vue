@@ -4,10 +4,22 @@
     class="rightBar"
     :style="rightContextStyle"
   >
-    <div class="bar-item" @click="handleDeleteCompoent">删除</div>
-    <div class="bar-item" @click="handleCopyCompoent">复制</div>
-    <div class="bar-item" @click="handleTopCompoent">置顶</div>
-    <div class="bar-item" @click="handleBottomCompoent">置底</div>
+    <div class="bar-item" @click="handleDeleteCompoent">
+        <i class="el-icon-delete"></i>
+        删除
+    </div>
+    <div class="bar-item" @click="handleCopyCompoent">
+        <i class="el-icon-copy-document"></i>
+        复制
+    </div>
+    <div class="bar-item" @click="handleTopCompoent">
+        <i class="el-icon-top"></i>
+        置顶
+    </div>
+    <div class="bar-item" @click="handleBottomCompoent">
+        <i class="el-icon-bottom"></i>
+        置底
+    </div>
   </div>
 </template>
 <script>
