@@ -1,7 +1,20 @@
 <template>
     <div class="editor">
       <div class="editor-header">
-        这是头部操作栏
+        <div class="header-undo">
+          <icon-font
+            size="18"
+            title="撤回操作"
+            code="&#xe822;"
+            />
+        </div>
+        <div class="header-redo">
+          <icon-font
+            size="18"
+            title="前进操作"
+            code="&#xe822;"
+            />
+        </div>
       </div>
       <div class="editor-container">
         <DragArea></DragArea>
@@ -34,6 +47,26 @@ export default {
     border-left: .02666667rem solid #ebedf0;
     box-shadow: 0px 2px 6px rgba(221, 221, 221, 0.445);
     z-index: 99;
+    display: flex;
+    .header-undo {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      padding: 5px;
+      &:hover {
+        background: #e9f1ff;
+      }
+    }
+    .header-redo {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      padding: 5px;
+      transform: rotateY(180deg);
+      &:hover {
+        background: #e9f1ff;
+      }
+    }
   }
   .editor-container {
     width: 1100px;

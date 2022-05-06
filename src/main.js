@@ -17,10 +17,12 @@ import {
   TitleComponent,
   LegendComponent,
 } from 'echarts/components';
+import IconFont from './components/IconFont.vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 import 'element-ui/lib/theme-chalk/index.css';
+import './style/common.less';
 
 use([
   CanvasRenderer,
@@ -33,6 +35,7 @@ use([
   LegendComponent,
 ]);
 
+Vue.component('icon-font', IconFont);
 Vue.component('v-chart', ECharts);
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
