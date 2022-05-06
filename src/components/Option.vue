@@ -74,6 +74,9 @@
         </el-row>
       </div>
     </div>
+    <div v-else class="option-editor">
+      未选中组件
+    </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';

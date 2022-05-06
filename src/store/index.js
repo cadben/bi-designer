@@ -9,6 +9,8 @@ export default new Vuex.Store({
   state: {
     editorLayout: [],
     componentLists: [],
+    executeOpearation: [[]],
+    executeIndex: 0,
   },
   mutations: {
     set_editorLayout: (state, payload) => {
@@ -19,6 +21,29 @@ export default new Vuex.Store({
     },
     deleteComponent: (state, payload) => {
       state.editorLayout = state.editorLayout.filter((compoent) => payload !== compoent.id);
+    },
+    record: (state) => {
+      let curExecute = JSON.parse(JSON.stringify(state.executeOpearation));
+      state.executeIndex += 1;
+      curExecute = curExecute.slice(0, state.executeIndex);
+      curExecute.push(JSON.parse(JSON.stringify(state.editorLayout)));
+      state.executeOpearation = curExecute;
+    },
+    undo: (state) => {
+      if (state.executeIndex <= 0) {
+        return;
+      }
+      state.executeIndex -= 1;
+      const preState = state.executeOpearation[state.executeIndex];
+      state.editorLayout = preState;
+    },
+    redo: (state) => {
+      if (state.executeIndex >= state.executeOpearation.length) {
+        return;
+      }
+      state.executeIndex += 1;
+      const preState = state.executeOpearation[state.executeIndex];
+      state.editorLayout = preState;
     },
   },
   actions: {
@@ -39,9 +64,11 @@ export default new Vuex.Store({
         id: uuid(),
       };
       commit('addComponent', component);
+      commit('record');
     },
     handleDeleteCompoent({ commit }, { id }) {
       commit('deleteComponent', id);
+      commit('record');
     },
     handleCopyCompoent({ commit, state }, { id }) {
       let component = {};
@@ -83,5 +110,7 @@ export default new Vuex.Store({
   getters: {
     editorLayout: (state) => state.editorLayout,
     selectCompont: (state) => state.editorLayout.find((v) => v.active === true),
+    executeIndex: (state) => state.executeIndex,
+    executeOpearation: (state) => state.executeOpearation,
   },
 });

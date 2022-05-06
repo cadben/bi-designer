@@ -1,18 +1,26 @@
 <template>
     <div class="editor">
       <div class="editor-header">
-        <div class="header-undo">
+        <div
+          :class="`header-undo`"
+          @click="handleUndo"
+        >
           <icon-font
             size="18"
             title="撤回操作"
-            code="&#xe822;"
+            code="&#xe617;"
+            :class="`${!canUndo ? 'disable-btn' : ''}`"
             />
         </div>
-        <div class="header-redo">
+        <div
+          :class="`header-redo`"
+          @click="handleRedo"
+        >
           <icon-font
             size="18"
             title="前进操作"
-            code="&#xe822;"
+            code="&#xe619;"
+            :class="`header-redo ${!canRedo ? 'disable-btn' : ''}`"
             />
         </div>
       </div>
@@ -22,6 +30,7 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 import DragArea from './MainEditorArea/dragArea.vue';
 
 export default {
@@ -32,6 +41,33 @@ export default {
   data() {
     return {
     };
+  },
+  computed: {
+    ...mapGetters(['executeOpearation', 'executeIndex']),
+    canUndo() {
+      return this.executeIndex > 0;
+    },
+    canRedo() {
+      return this.executeIndex < this.executeOpearation.length - 1;
+    },
+  },
+  methods: {
+    handleUndo() {
+      if (!this.canUndo) {
+        return;
+      }
+      this.$store.commit({
+        type: 'undo',
+      });
+    },
+    handleRedo() {
+      if (!this.canRedo) {
+        return;
+      }
+      this.$store.commit({
+        type: 'redo',
+      });
+    },
   },
   mounted() {
   },
@@ -62,10 +98,13 @@ export default {
       height: 20px;
       border-radius: 6px;
       padding: 5px;
-      transform: rotateY(180deg);
       &:hover {
         background: #e9f1ff;
       }
+    }
+    .disable-btn {
+      color: #c8cad4;
+      cursor: not-allowed;
     }
   }
   .editor-container {
