@@ -5,6 +5,7 @@ import CBarChart from './CBarChart.vue';
 import CLineChart from './CLineChart.vue';
 import CPieChart from './CPieChart.vue';
 import CAreaChart from './CAreaChart.vue';
+import CFunnelChart from './CFunnelChart.vue';
 
 export default {
   CTable,
@@ -14,4 +15,5 @@ export default {
   CLine: CLineChart,
   CPie: CPieChart,
   CArea: CAreaChart,
+  CFunnel: CFunnelChart,
 };

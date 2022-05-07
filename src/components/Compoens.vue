@@ -108,6 +108,12 @@ export default {
           type: 'chart',
           imgSrc: 'http://rb6rk8283.hd-bkt.clouddn.com/editor/area-basic.webp?e=1651381479&token=9rPdsMX3D4ANa5yaN6J-PsinXDmd6xMP185zAzTo:NTp4Bm2jA4-3duGQSeWZkBf7p7k=',
         },
+        {
+          name: 'funnel',
+          label: '漏斗图',
+          type: 'chart',
+          imgSrc: 'http://rb6rk8283.hd-bkt.clouddn.com/editor/funnel.webp',
+        },
       ],
     };
   },

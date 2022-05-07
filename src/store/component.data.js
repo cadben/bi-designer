@@ -244,3 +244,33 @@ export const AREA_CHART_DATA = {
     ],
   },
 };
+
+export const FUNNEL_CHART_DATA = {
+  title: '漏斗图',
+  dataOptions: {
+    getDataType: 'static',
+    tableDataUrl: 'https://www.fastmock.site/mock/cbee0e873d12658de056a6d54a997a11/bi/api/funnel',
+    chartJsonData: [
+      {
+        数据: '52',
+        名称: '手机',
+      },
+      {
+        数据: '35',
+        名称: '电脑',
+      },
+      {
+        数据: '24',
+        名称: '笔',
+      },
+      {
+        数据: '78',
+        名称: '书本',
+      },
+      {
+        数据: '100',
+        名称: '衣服',
+      },
+    ],
+  },
+};

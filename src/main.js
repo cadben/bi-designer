@@ -7,6 +7,7 @@ import {
   BarChart,
   LineChart,
   PieChart,
+  FunnelChart,
 } from 'echarts/charts';
 import {
   CanvasRenderer,
@@ -33,6 +34,7 @@ use([
   TitleComponent,
   PieChart,
   LegendComponent,
+  FunnelChart,
 ]);
 
 Vue.component('icon-font', IconFont);
