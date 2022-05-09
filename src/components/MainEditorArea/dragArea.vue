@@ -1,7 +1,7 @@
 <template>
     <div
       class="dragArea"
-      ref="dragAreaRef"
+      :style="scaleStyle"
       @dragover.prevent
       @drop="(e) => addComponent(e)"
       @click="clearListener()"
@@ -54,7 +54,12 @@ import MyComponents from './editorComponent/compoents';
 import RightBar from '../rightBar.vue';
 
 export default {
-  props: {},
+  props: {
+    scaleNum: {
+      type: Number,
+      require: false,
+    },
+  },
   components: {
     VueDraggableResizable,
     RightBar,
@@ -62,6 +67,11 @@ export default {
   },
   computed: {
     ...mapGetters(['editorLayout']),
+    scaleStyle() {
+      return `
+        transform: scale(${this.scaleNum});
+      `;
+    },
     rightContextStyle() {
       const { location } = this.rightContextConfig;
       return {
@@ -184,12 +194,11 @@ export default {
 </script>
 <style lang="less" scoped>
 .dragArea {
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 10%, rgba(0, 0, 0, 0) 10%),
-  linear-gradient(360deg, rgba(50, 0, 0, 0.05) 10%, rgba(0, 0, 0, 0) 10%);
-  background-size: 20px 20px;
+  width: 1200px;
+  height: 880px;
+  background: rgba(255, 255, 255, 0.747);
   position: relative;
+  margin: 30px auto;
   .resize-box-class {
     border: 1px solid transparent;
   }

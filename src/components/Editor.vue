@@ -25,7 +25,30 @@
         </div>
       </div>
       <div class="editor-container">
-        <DragArea></DragArea>
+        <DragArea
+          :scale-num="scaleOption"
+        >
+        </DragArea>
+        <div class="scale-tip">
+          <icon-font
+            code="&#xe607;"
+            color="#D8D9E2"
+            @click="handleAddorSubScale('add')"
+          ></icon-font>
+          <el-slider
+            v-model="scaleOption"
+            :step="0.1"
+            :min="0.5"
+            :max="2"
+            :format-tooltip="scaleTipStyle"
+            class="scale-bar"
+          ></el-slider>
+          <icon-font
+            code="&#xe608;"
+            color="#D8D9E2"
+            @click="handleAddorSubScale('sub')"
+          ></icon-font>
+        </div>
       </div>
     </div>
 </template>
@@ -40,6 +63,7 @@ export default {
   },
   data() {
     return {
+      scaleOption: 1,
     };
   },
   computed: {
@@ -52,6 +76,16 @@ export default {
     },
   },
   methods: {
+    handleAddorSubScale(type) {
+      if (type === 'sub') {
+        this.executeIndex -= 0.1;
+      } else {
+        this.executeIndex += 0.1;
+      }
+    },
+    scaleTipStyle(val) {
+      return `${Math.floor(val * 100)}%`;
+    },
     handleUndo() {
       if (!this.canUndo) {
         return;
@@ -76,7 +110,7 @@ export default {
 <style lang="less" scoped>
 .editor {
   flex: 1;
-  background-color: #f7f8fa;
+  overflow: hidden;
   .editor-header {
     padding: 20px;
     background: #fff;
@@ -108,9 +142,44 @@ export default {
     }
   }
   .editor-container {
-    width: 1100px;
-    height: 620px;
-    margin: 30px auto;
+    width: 100%;
+    height: calc(100% - 70px);
+    background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 10%, rgba(0, 0, 0, 0) 10%),
+    linear-gradient(360deg, rgba(50, 0, 0, 0.05) 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 20px 20px;
+    overflow: scroll;
+    position: relative;
+    /deep/ .scale-tip {
+      position: fixed;
+      width: 200px;
+      bottom: 40px;
+      right: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .scale-bar {
+        width: 130px;
+      }
+      .el-slider__runway {
+        height: 6px;
+        border-radius: 2px;
+        margin: 8px 0;
+      }
+      .el-slider__button-wrapper {
+        top: -16px;
+        .el-slider__button {
+          width: 10px;
+          height: 10px;
+          border: solid 1px #D8D9E2;
+        }
+      }
+      .el-slider__bar {
+        background-color: #D8D9E2;
+        height: 4px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+    }
   }
 }
 </style>
