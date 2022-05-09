@@ -1,48 +1,51 @@
 <template>
-    <div
-      class="dragArea"
-      :style="scaleStyle"
-      @dragover.prevent
-      @drop="(e) => addComponent(e)"
-      @click="clearListener()"
-    >
-      <vue-draggable-resizable
-        v-for="item in editorLayout"
-        :key="item.id"
-        :x="item.x"
-        :y="item.y"
-        :w="item.width"
-        :h="item.height"
-        :parent="true"
-        :active="item.active"
-        :is-conflict-check="true"
-        :prevent-deactivation="true"
-        @activated="onActivated(item)"
-        @resizing="(x, y, w, h) => handleResize(item, x, y, w, h)"
-        @dragging="(x, y, w, h) => handleDrag(item, x, y, w, h)"
-        class="resize-box-class"
-        class-name-active="active"
+    <div :style="dragAreaOutStyle">
+      <div
+        ref="dragArea"
+        class="dragArea"
+        :style="scaleStyle"
+        @dragover.prevent
+        @drop="(e) => addComponent(e)"
+        @click="clearListener()"
       >
-        <div
-          style="width: 100%; height: 100%;"
-          @click="clearListener()"
-          @contextmenu.prevent="(e) => handleShowRightBar(e, item)"
+        <vue-draggable-resizable
+          v-for="item in editorLayout"
+          :key="item.id"
+          :x="item.x"
+          :y="item.y"
+          :w="item.width"
+          :h="item.height"
+          :parent="true"
+          :active="item.active"
+          :is-conflict-check="true"
+          :prevent-deactivation="true"
+          @activated="onActivated(item)"
+          @resizing="(x, y, w, h) => handleResize(item, x, y, w, h)"
+          @dragging="(x, y, w, h) => handleDrag(item, x, y, w, h)"
+          class="resize-box-class"
+          class-name-active="active"
         >
-          <component
-            :is="`c-${item.data.type}`"
-            :data="item"
+          <div
+            style="width: 100%; height: 100%;"
+            @click="clearListener()"
+            @contextmenu.prevent="(e) => handleShowRightBar(e, item)"
           >
-          </component>
-        </div>
-      </vue-draggable-resizable>
-      <right-bar
-        :right-context-config="rightContextConfig"
-        :right-context-style="rightContextStyle"
-        @handleDeleteCompoent="handleDeleteCompoent"
-        @handleCopyCompoent="handleCopyCompoent"
-        @handleTopCompoent="handleTopCompoent"
-        @handleBottomCompoent="handleBottomCompoent"
-      />
+            <component
+              :is="`c-${item.data.type}`"
+              :data="item"
+            >
+            </component>
+          </div>
+        </vue-draggable-resizable>
+        <right-bar
+          :right-context-config="rightContextConfig"
+          :right-context-style="rightContextStyle"
+          @handleDeleteCompoent="handleDeleteCompoent"
+          @handleCopyCompoent="handleCopyCompoent"
+          @handleTopCompoent="handleTopCompoent"
+          @handleBottomCompoent="handleBottomCompoent"
+        />
+      </div>
     </div>
 </template>
 <script>
@@ -70,6 +73,8 @@ export default {
     scaleStyle() {
       return `
         transform: scale(${this.scaleNum});
+        left: ${this.scaleNum < 0.5 ? `${200 * (2 - this.scaleNum)}px` : '100px'};
+        top: ${this.scaleNum < 0.5 ? `${100 * (2 - this.scaleNum)}px` : '100px'};
       `;
     },
     rightContextStyle() {
@@ -78,6 +83,14 @@ export default {
         left: `${location.x}px`,
         top: `${location.y}px`,
       };
+    },
+    dragAreaOutStyle() {
+      const left = this.scaleNum < 0.5 ? `${300 * (1 - this.scaleNum)}` : 100;
+      const top = this.scaleNum < 0.5 ? `${340 * (1 - this.scaleNum)}` : 100;
+      return `
+        width: ${this.scaleNum * 1920 + 2 * left}px;
+        height: ${this.scaleNum * 1080 + 2 * top}px;
+      `;
     },
   },
   data() {
@@ -194,11 +207,12 @@ export default {
 </script>
 <style lang="less" scoped>
 .dragArea {
-  width: 1200px;
-  height: 880px;
+  width: 1920px;
+  height: 1080px;
   background: rgba(255, 255, 255, 0.747);
   position: relative;
-  margin: 30px auto;
+  transform-origin: 0px 0px;
+  transition: all 0.2s ease 0s;
   .resize-box-class {
     border: 1px solid transparent;
   }

@@ -39,8 +39,8 @@
           <el-slider
             v-model="scaleOption"
             :step="0.1"
-            :min="0.5"
-            :max="2"
+            :min="0.2"
+            :max="1.5"
             :format-tooltip="scaleTipStyle"
             class="scale-bar"
           ></el-slider>
@@ -65,7 +65,7 @@ export default {
   },
   data() {
     return {
-      scaleOption: 1,
+      scaleOption: 0.5,
     };
   },
   computed: {
