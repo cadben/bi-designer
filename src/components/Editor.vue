@@ -30,11 +30,12 @@
         >
         </DragArea>
         <div class="scale-tip">
-          <icon-font
-            code="&#xe607;"
-            color="#D8D9E2"
-            @click="handleAddorSubScale('add')"
-          ></icon-font>
+          <span @click="handleAddorSubScale('sub')">
+            <icon-font
+              code="&#xe607;"
+              color="#D8D9E2"
+            ></icon-font>
+          </span>
           <el-slider
             v-model="scaleOption"
             :step="0.1"
@@ -43,11 +44,12 @@
             :format-tooltip="scaleTipStyle"
             class="scale-bar"
           ></el-slider>
-          <icon-font
-            code="&#xe608;"
-            color="#D8D9E2"
-            @click="handleAddorSubScale('sub')"
-          ></icon-font>
+          <span @click="handleAddorSubScale('add')">
+            <icon-font
+              code="&#xe608;"
+              color="#D8D9E2"
+            ></icon-font>
+          </span>
         </div>
       </div>
     </div>
@@ -77,10 +79,11 @@ export default {
   },
   methods: {
     handleAddorSubScale(type) {
+      console.log(type);
       if (type === 'sub') {
-        this.executeIndex -= 0.1;
+        this.scaleOption -= 0.1;
       } else {
-        this.executeIndex += 0.1;
+        this.scaleOption += 0.1;
       }
     },
     scaleTipStyle(val) {
@@ -153,7 +156,7 @@ export default {
       position: fixed;
       width: 200px;
       bottom: 40px;
-      right: 200px;
+      right: 450px;
       display: flex;
       align-items: center;
       justify-content: space-between;
