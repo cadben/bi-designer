@@ -3,6 +3,7 @@ import CSelectGroup from './CSelectGroup.vue';
 import CJsonEditor from './CJsonEditor.vue';
 import CGetDataComponent from './CGetDataComponent.vue';
 import CVueColor from './CVueColor.vue';
+import CFontSelect from './CFontSelect.vue';
 
 export default {
   cRadioGroup: CRadioGroup,
@@ -10,4 +11,5 @@ export default {
   cJsonEditor: CJsonEditor,
   cGetDataComponent: CGetDataComponent,
   cColorPicker: CVueColor,
+  cFontSelect: CFontSelect,
 };

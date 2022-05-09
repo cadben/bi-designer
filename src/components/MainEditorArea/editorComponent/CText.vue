@@ -23,14 +23,19 @@ export default {
       const {
         // color,
         fontSize,
-        // bold,
         textAlign,
+        fontNormal,
       } = this.options;
+      const {
+        bold, italic, underLine,
+      } = fontNormal;
       const { bgcolor } = this.data;
       return {
         // color,
         fontSize: `${fontSize}px`,
-        // fontWeight: bold ? 'bold' : 'normal',
+        fontWeight: bold ? 'bold' : 'normal',
+        fontStyle: italic ? 'italic' : 'normal',
+        textDecoration: underLine ? 'underline' : 'none',
         textAlign,
         backgroundColor: bgcolor,
       };

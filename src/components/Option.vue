@@ -51,7 +51,7 @@
           <el-col
             :span="6"
             class="option-item-label"
-          >{{ item.style_label }}：</el-col>
+          >{{ `${item.style_label}：` }}</el-col>
           <el-col :span="18">
             <component
               :is="item.component"

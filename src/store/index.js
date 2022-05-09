@@ -57,9 +57,9 @@ export default new Vuex.Store({
         name: `新建图层${state.editorLayout.length + 1}`,
         x: x || 10,
         y: y || 10,
-        width: 400,
-        height: 200,
-        bgcolor: '#fff',
+        width: newObject.width || 400,
+        height: newObject.height || 200,
+        bgcolor: newObject.bgcolor || '#fff',
         active: false,
         id: uuid(),
       };

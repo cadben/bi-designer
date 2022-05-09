@@ -85,6 +85,12 @@ export default {
           imgSrc: 'http://rb6rk8283.hd-bkt.clouddn.com/editor/%E5%9B%BE%E7%89%87.png',
         },
         {
+          name: 'rect',
+          label: '矩形',
+          type: 'normal',
+          imgSrc: '',
+        },
+        {
           name: 'bar',
           label: '柱状图',
           type: 'chart',

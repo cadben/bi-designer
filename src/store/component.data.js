@@ -3,7 +3,11 @@ export const TEXT_DATA = {
   color: '#000000',
   fontSize: 12,
   fontFamily: 'ZCOOL QingKe HuangYou',
-  bold: false,
+  fontNormal: {
+    bold: false,
+    italic: false,
+    underLine: false,
+  },
   textAlign: 'left',
 };
 

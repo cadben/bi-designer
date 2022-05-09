@@ -40,6 +40,18 @@ export const TEXT_STYLE = [
       ],
     },
   },
+  {
+    style_label: '字体形状',
+    style_id: 'fontNormal',
+    component: 'c-font-select',
+    componentAttr: {
+      code: [
+        '&#xe68d;',
+        '&#xe61c;',
+        '&#xe6ec;',
+      ],
+    },
+  },
 ];
 
 export const IMAGE_STYLE = [{
