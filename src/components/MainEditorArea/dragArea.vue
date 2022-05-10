@@ -10,6 +10,7 @@
       >
         <vue-draggable-resizable
           v-for="item in editorLayout"
+          :id="item.id"
           :key="item.id"
           :x="item.x"
           :y="item.y"
@@ -20,8 +21,10 @@
           :is-conflict-check="true"
           :prevent-deactivation="true"
           @activated="onActivated(item)"
+          @deactivated="onDeactivated(item)"
           @resizing="(x, y, w, h) => handleResize(item, x, y, w, h)"
           @dragging="(x, y, w, h) => handleDrag(item, x, y, w, h)"
+          @dragstop="stopDrag"
           class="resize-box-class"
           class-name-active="active"
         >
@@ -45,6 +48,19 @@
           @handleTopCompoent="handleTopCompoent"
           @handleBottomCompoent="handleBottomCompoent"
         />
+        <div
+          v-for="item in showRefrenceList['x']"
+          :key="item"
+          class="vertical-refrence"
+          :style="`left: ${item}px`"
+        >
+        </div>
+        <div
+          v-for="item in showRefrenceList['y']"
+          :key="item"
+          class="horizontal-refrence"
+          :style="`top: ${item}px`">
+        </div>
       </div>
     </div>
 </template>
@@ -102,9 +118,23 @@ export default {
           y: 0,
         },
       },
+      showRefrenceList: {
+        x: [],
+        y: [],
+      },
     };
   },
   mounted() {
+    this.$refs.dragArea.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const c = e.target.getAttribute('class');
+      if (c === 'dragArea') {
+        this.editorLayout.forEach((element) => {
+          // eslint-disable-next-line no-param-reassign
+          element.active = false;
+        });
+      }
+    });
   },
   methods: {
     addComponent(e) {
@@ -130,15 +160,72 @@ export default {
       e.active = true;
     },
     onDeactivated(e) {
-      e.active = false;
+      console.log(e);
+    },
+    stopDrag() {
+      this.showRefrenceList = {
+        x: [],
+        y: [],
+      };
     },
     handleDrag(e, x, y) {
+      let finalX = x;
+      let finalY = y;
+      const showXList = [];
+      const showYList = [];
+      const getRefrenceLines = (item) => {
+        let curX = [];
+        let curY = [];
+        for (let i = 0; i < this.editorLayout.length; i += 1) {
+          if (item.id === this.editorLayout[i].id) {
+            // eslint-disable-next-line no-continue
+            continue;
+          }
+          const {
+            x: X, y: Y, width, height,
+          } = this.editorLayout[i];
+          curX = curX.concat(X, X + width);
+          curY = curY.concat(Y, Y + height);
+        }
+        return {
+          x: [960, ...curX],
+          y: [540, ...curY],
+        };
+      };
+      const currentRefrenceList = getRefrenceLines(e);
+      for (let i = 0; i < currentRefrenceList.x.length; i += 1) {
+        const cur = currentRefrenceList.x[i];
+        if (finalX === cur) {
+          return;
+        }
+        if (Math.abs(finalX - cur) <= 30) {
+          // const dom = document.getElementById(`${e.id}`);
+          // console.log(dom.style);
+          // dom.style.transform = `translate(${cur}px, ${y}px)`;
+          showXList.push(cur);
+          finalX = cur;
+        }
+      }
+      for (let i = 0; i < currentRefrenceList.y.length; i += 1) {
+        const cur = currentRefrenceList.y[i];
+        if (finalY === cur) {
+          return;
+        }
+        if (Math.abs(finalY - cur) <= 30) {
+          showYList.push(cur);
+          finalY = cur;
+        }
+      }
+      this.showRefrenceList = {
+        x: showXList,
+        y: showYList,
+      };
       for (let i = 0; i < this.editorLayout.length; i += 1) {
         const element = this.editorLayout[i];
         const { id } = element;
         if (id === e.id) {
-          element.x = x;
-          element.y = y;
+          element.x = finalX;
+          element.y = finalY;
         }
       }
     },
@@ -225,6 +312,18 @@ export default {
   }
   .active-resize {
     border: 1px solid #000;
+  }
+  .horizontal-refrence {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 0, 0, 0.5);
+    position: absolute;
+  }
+  .vertical-refrence {
+    height: 100%;
+    width: 1px;
+    background-color: rgba(255, 0, 0, 0.5);
+    position: absolute;
   }
 }
 </style>

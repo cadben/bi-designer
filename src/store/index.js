@@ -61,7 +61,7 @@ export default new Vuex.Store({
         height: newObject.height || 200,
         bgcolor: newObject.bgcolor || '#fff',
         active: false,
-        id: uuid(),
+        id: uuid().replace(/-/g, ''),
       };
       commit('addComponent', component);
       commit('record');

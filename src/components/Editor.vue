@@ -65,7 +65,7 @@ export default {
   },
   data() {
     return {
-      scaleOption: 0.5,
+      scaleOption: 1,
     };
   },
   computed: {
