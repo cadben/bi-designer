@@ -9,11 +9,32 @@ export const TEXT_DATA = {
     underLine: false,
   },
   textAlign: 'left',
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+};
+
+export const RECT_DATA = {
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
 };
 
 export const IMAGE_DATA = {
   imgUrl: 'https://github.com/cadben/images_store/blob/master/img/4YT4k5.png?raw=true',
   showType: 'full',
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
 };
 
 export const BAR_CHART_DATA = {
@@ -74,6 +95,12 @@ export const BAR_CHART_DATA = {
       },
     ],
   },
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
 };
 
 export const TABLE_DATA = {
@@ -97,6 +124,12 @@ export const TABLE_DATA = {
     address: '上海市普陀区金沙江路 1516 弄',
   }],
   tableDataUrl: 'http://is.snssdk.com/api/news/feed/v51/',
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
 };
 
 export const LINE_DATA = {
@@ -157,6 +190,12 @@ export const LINE_DATA = {
       },
     ],
   },
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
 };
 
 export const PIE_CHART_DATA = {
@@ -186,6 +225,12 @@ export const PIE_CHART_DATA = {
         名称: '衣服',
       },
     ],
+  },
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
   },
 };
 
@@ -247,6 +292,12 @@ export const AREA_CHART_DATA = {
       },
     ],
   },
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
 };
 
 export const FUNNEL_CHART_DATA = {
@@ -276,5 +327,11 @@ export const FUNNEL_CHART_DATA = {
         名称: '衣服',
       },
     ],
+  },
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
   },
 };

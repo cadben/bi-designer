@@ -7,6 +7,7 @@ import {
   PIE_CHART_DATA,
   AREA_CHART_DATA,
   FUNNEL_CHART_DATA,
+  RECT_DATA,
 } from './component.data';
 import {
   IMAGE_STYLE,
@@ -17,6 +18,7 @@ import {
   PIE_CHART_STYLE,
   AREA_CHART_STYLE,
   FUNNEL_CHART_STYLE,
+  RECT_STYLE,
 } from './component.style';
 
 export const TEXT = {
@@ -32,6 +34,22 @@ export const TEXT = {
     type: 'text',
     componentStyle: TEXT_STYLE,
     componentData: TEXT_DATA,
+  },
+};
+
+export const RECT = {
+  name: '',
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 100,
+  bgcolor: '#000',
+  active: false,
+  id: Math.random(),
+  data: {
+    type: 'rect',
+    componentStyle: RECT_STYLE,
+    componentData: RECT_DATA,
   },
 };
 

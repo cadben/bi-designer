@@ -6,6 +6,7 @@ import CLineChart from './CLineChart.vue';
 import CPieChart from './CPieChart.vue';
 import CAreaChart from './CAreaChart.vue';
 import CFunnelChart from './CFunnelChart.vue';
+import CRect from './CRect.vue';
 
 export default {
   CTable,
@@ -16,4 +17,5 @@ export default {
   CPie: CPieChart,
   CArea: CAreaChart,
   CFunnel: CFunnelChart,
+  CRect,
 };

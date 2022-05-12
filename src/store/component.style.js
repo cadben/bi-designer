@@ -41,6 +41,11 @@ export const TEXT_STYLE = [
     },
   },
   {
+    style_label: '圆角边框',
+    style_id: 'fourBorderRadius',
+    component: 'c-border-radius-group',
+  },
+  {
     style_label: '字体形状',
     style_id: 'fontNormal',
     component: 'c-font-select',
@@ -51,6 +56,14 @@ export const TEXT_STYLE = [
         '&#xe6ec;',
       ],
     },
+  },
+];
+
+export const RECT_STYLE = [
+  {
+    style_label: '圆角边框',
+    style_id: 'fourBorderRadius',
+    component: 'c-border-radius-group',
   },
 ];
 
@@ -78,6 +91,10 @@ export const IMAGE_STYLE = [{
       },
     ],
   },
+}, {
+  style_label: '圆角边框',
+  style_id: 'fourBorderRadius',
+  component: 'c-border-radius-group',
 }];
 
 export const BAR_CHART_STYLE = [{
@@ -119,6 +136,10 @@ export const BAR_CHART_STYLE = [{
         },
       },
     },
+}, {
+  style_label: '圆角边框',
+  style_id: 'fourBorderRadius',
+  component: 'c-border-radius-group',
 }];
 
 export const TABLE_STYLE = [{
@@ -151,6 +172,10 @@ export const TABLE_STYLE = [{
   componentAttr: {
     size: 'mini',
   },
+}, {
+  style_label: '圆角边框',
+  style_id: 'fourBorderRadius',
+  component: 'c-border-radius-group',
 }];
 
 export const LINE_CHART_STYLE = [{
@@ -192,6 +217,10 @@ export const LINE_CHART_STYLE = [{
         },
       },
     },
+}, {
+  style_label: '圆角边框',
+  style_id: 'fourBorderRadius',
+  component: 'c-border-radius-group',
 }];
 
 export const PIE_CHART_STYLE = [{
@@ -233,6 +262,10 @@ export const PIE_CHART_STYLE = [{
         },
       },
     },
+}, {
+  style_label: '圆角边框',
+  style_id: 'fourBorderRadius',
+  component: 'c-border-radius-group',
 }];
 
 export const AREA_CHART_STYLE = [{
@@ -274,6 +307,10 @@ export const AREA_CHART_STYLE = [{
         },
       },
     },
+}, {
+  style_label: '圆角边框',
+  style_id: 'fourBorderRadius',
+  component: 'c-border-radius-group',
 }];
 
 export const FUNNEL_CHART_STYLE = [{
@@ -315,4 +352,8 @@ export const FUNNEL_CHART_STYLE = [{
         },
       },
     },
+}, {
+  style_label: '圆角边框',
+  style_id: 'fourBorderRadius',
+  component: 'c-border-radius-group',
 }];

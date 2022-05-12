@@ -25,11 +25,18 @@ export default {
         fontSize,
         textAlign,
         fontNormal,
+        fourBorderRadius,
       } = this.options;
       const {
         bold, italic, underLine,
       } = fontNormal;
       const { bgcolor } = this.data;
+      const {
+        left,
+        right,
+        top,
+        bottom,
+      } = fourBorderRadius;
       return {
         // color,
         fontSize: `${fontSize}px`,
@@ -38,6 +45,7 @@ export default {
         textDecoration: underLine ? 'underline' : 'none',
         textAlign,
         backgroundColor: bgcolor,
+        borderRadius: `${top}px ${right}px ${bottom}px ${left}px`,
       };
     },
     options() {

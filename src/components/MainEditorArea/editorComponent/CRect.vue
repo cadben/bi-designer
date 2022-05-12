@@ -1,6 +1,6 @@
 <template>
     <div
-      class="img-box"
+      class="text-box"
       :style="boxStyle"
     >
     </div>
@@ -28,10 +28,9 @@ export default {
         top,
         bottom,
       } = fourBorderRadius;
+      const { bgcolor } = this.data;
       return {
-        backgroundImage: `url(${this.options.imgUrl})`,
-        backgroundRepeat: `${this.options.showType === 'full' ? 'repeat' : 'no-repeat'}`,
-        backgroundSize: `${this.options.showType === 'full' ? 'contain' : 'cover'}`,
+        backgroundColor: bgcolor,
         borderRadius: `${top}px ${right}px ${bottom}px ${left}px`,
       };
     },
@@ -50,9 +49,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.img-box {
+.text-box {
   caret-color: transparent;
-  overflow: auto;
+  overflow: hidden;
   height: 100%;
   width: 100%;
 }

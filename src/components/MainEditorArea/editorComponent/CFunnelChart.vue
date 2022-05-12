@@ -44,8 +44,18 @@ export default {
   computed: {
     boxStyle() {
       const { bgcolor } = this.data;
+      const {
+        fourBorderRadius,
+      } = this.normalOptiosn;
+      const {
+        left,
+        right,
+        top,
+        bottom,
+      } = fourBorderRadius;
       return {
         backgroundColor: bgcolor,
+        borderRadius: `${top}px ${right}px ${bottom}px ${left}px`,
       };
     },
     normalOptiosn() {
