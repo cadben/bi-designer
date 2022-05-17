@@ -91,7 +91,6 @@ export default {
           text: title,
           left: 'center',
         },
-        backgroundColor: '#fff',
         color: ['#3D91F7', '#61BE67'],
         tooltip: {
           show: true, // 弹层数据去掉
