@@ -8,6 +8,8 @@ import {
   AREA_CHART_DATA,
   FUNNEL_CHART_DATA,
   RECT_DATA,
+  RADAR_CHART_DATA,
+  SANKEY_CHART_DATA,
 } from './component.data';
 import {
   IMAGE_STYLE,
@@ -19,6 +21,8 @@ import {
   AREA_CHART_STYLE,
   FUNNEL_CHART_STYLE,
   RECT_STYLE,
+  RADAR_CHART_STYLE,
+  SANKEY_CHART_STYLE,
 } from './component.style';
 
 export const TEXT = {
@@ -162,5 +166,37 @@ export const FUNNEL = {
     type: 'funnel',
     componentStyle: FUNNEL_CHART_STYLE,
     componentData: FUNNEL_CHART_DATA,
+  },
+};
+
+export const RADAR = {
+  name: '',
+  x: 0,
+  y: 0,
+  width: 500,
+  height: 600,
+  bgcolor: '',
+  active: false,
+  id: Math.random(),
+  data: {
+    type: 'radar',
+    componentStyle: RADAR_CHART_STYLE,
+    componentData: RADAR_CHART_DATA,
+  },
+};
+
+export const SANKEY = {
+  name: '',
+  x: 0,
+  y: 0,
+  width: 500,
+  height: 600,
+  bgcolor: '',
+  active: false,
+  id: Math.random(),
+  data: {
+    type: 'sankey',
+    componentStyle: SANKEY_CHART_STYLE,
+    componentData: SANKEY_CHART_DATA,
   },
 };

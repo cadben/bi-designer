@@ -3,11 +3,14 @@ import Vue from 'vue';
 import ElementUI from 'element-ui';
 import ECharts from 'vue-echarts';
 import { use } from 'echarts/core';
+import _ from 'lodash';
 import {
   BarChart,
   LineChart,
   PieChart,
   FunnelChart,
+  SankeyChart,
+  RadarChart,
 } from 'echarts/charts';
 import {
   CanvasRenderer,
@@ -35,10 +38,13 @@ use([
   PieChart,
   LegendComponent,
   FunnelChart,
+  SankeyChart,
+  RadarChart,
 ]);
 
 Vue.component('icon-font', IconFont);
 Vue.component('v-chart', ECharts);
+Vue.prototype._ = _;
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 Vue.use(ElementUI);

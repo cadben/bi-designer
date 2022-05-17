@@ -146,6 +146,18 @@ export default {
           type: 'chart',
           imgSrc: 'http://rb6rk8283.hd-bkt.clouddn.com/editor/funnel.webp',
         },
+        {
+          name: 'radar',
+          label: '雷达图',
+          type: 'chart',
+          imgSrc: 'http://rb6rk8283.hd-bkt.clouddn.com/editor/202205172113610.png',
+        },
+        {
+          name: 'sankey',
+          label: '桑基图',
+          type: 'chart',
+          imgSrc: 'http://rb6rk8283.hd-bkt.clouddn.com/editor/202205172111857.png',
+        },
       ],
     };
   },

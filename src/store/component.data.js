@@ -335,3 +335,71 @@ export const FUNNEL_CHART_DATA = {
     bottom: 0,
   },
 };
+
+export const RADAR_CHART_DATA = {
+  title: '雷达图',
+  dataOptions: {
+    getDataType: 'static',
+    tableDataUrl: 'https://www.fastmock.site/mock/cbee0e873d12658de056a6d54a997a11/bi/api/radar',
+    chartJsonData: {
+      label: [{
+        name: '人脉',
+        max: 100,
+      },
+      {
+        name: '资产证明',
+        max: 100,
+      },
+      {
+        name: '守约记录',
+        max: 100,
+      },
+      {
+        name: '身份证明',
+        max: 100,
+      },
+      {
+        name: '行为积累',
+        max: 100,
+      }],
+      data: [{
+        id: '小王',
+        value: [80, 80, 80, 70, 60, 50],
+      }, {
+        id: '女孩',
+        value: [60, 10, 100, 90, 70, 40],
+      }],
+    },
+  },
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+};
+
+export const SANKEY_CHART_DATA = {
+  title: '桑基图',
+  dataOptions: {
+    getDataType: 'static',
+    tableDataUrl: 'https://www.fastmock.site/mock/cbee0e873d12658de056a6d54a997a11/bi/api/sankey',
+    chartJsonData: [
+      { source: '外卖', target: '外卖 ', value: 8 },
+      { source: '外卖', target: '网约车 ', value: 2 },
+      { source: '外卖', target: '家政保洁 ', value: 2 },
+      { source: '网约车', target: '外卖 ', value: 2 },
+      { source: '网约车', target: '网约车 ', value: 4 },
+      { source: '网约车', target: '家政保洁 ', value: 2 },
+      { source: '家政保洁', target: '外卖 ', value: 1 },
+      { source: '家政保洁', target: '网约车 ', value: 1 },
+      { source: '家政保洁', target: '家政保洁 ', value: 2 },
+    ],
+  },
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+};
