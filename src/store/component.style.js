@@ -447,3 +447,48 @@ export const RADAR_CHART_STYLE = [{
   style_id: 'fourBorderRadius',
   component: 'c-border-radius-group',
 }];
+
+export const CAROUSEL_HORIZON_STYLE = [{
+  style_label: '标题',
+  style_id: 'title',
+  component: 'el-input',
+  componentAttr: {
+    size: 'mini',
+  },
+}, {
+  style_label: '数据设置',
+  style_id: 'dataOptions',
+  component: 'c-get-data-component',
+  childComponent:
+    {
+      getDataType: {
+        label: '获取数据',
+        componentAttr: {
+          size: 'mini',
+          options: [
+            {
+              key: 'static',
+              label: '静态数据',
+            },
+            {
+              key: 'get',
+              label: 'API(GET)',
+            },
+          ],
+        },
+      },
+      chartJsonData: {
+        label: '内容',
+      },
+      tableDataUrl: {
+        label: '数据接口',
+        componentAttr: {
+          size: 'mini',
+        },
+      },
+    },
+}, {
+  style_label: '圆角边框',
+  style_id: 'fourBorderRadius',
+  component: 'c-border-radius-group',
+}];

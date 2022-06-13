@@ -10,6 +10,7 @@ import {
   RECT_DATA,
   RADAR_CHART_DATA,
   SANKEY_CHART_DATA,
+  CAROUSEL_HORIZON_DATA,
 } from './component.data';
 import {
   IMAGE_STYLE,
@@ -23,6 +24,7 @@ import {
   RECT_STYLE,
   RADAR_CHART_STYLE,
   SANKEY_CHART_STYLE,
+  CAROUSEL_HORIZON_STYLE,
 } from './component.style';
 
 export const TEXT = {
@@ -198,5 +200,21 @@ export const SANKEY = {
     type: 'sankey',
     componentStyle: SANKEY_CHART_STYLE,
     componentData: SANKEY_CHART_DATA,
+  },
+};
+
+export const CAROUSEL = {
+  name: '',
+  x: 0,
+  y: 0,
+  width: 500,
+  height: 600,
+  bgcolor: '',
+  active: false,
+  id: Math.random(),
+  data: {
+    type: 'carousel',
+    componentStyle: CAROUSEL_HORIZON_STYLE,
+    componentData: CAROUSEL_HORIZON_DATA,
   },
 };

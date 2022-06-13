@@ -403,3 +403,23 @@ export const SANKEY_CHART_DATA = {
     bottom: 0,
   },
 };
+
+export const CAROUSEL_HORIZON_DATA = {
+  title: '文本轮播图',
+  dataOptions: {
+    chartJsonData: [
+      11111111,
+      22222222,
+      33333333,
+      44444444,
+    ],
+    getDataType: 'static',
+    tableDataUrl: 'https://www.fastmock.site/mock/cbee0e873d12658de056a6d54a997a11/bi/api/sankey',
+  },
+  fourBorderRadius: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+};

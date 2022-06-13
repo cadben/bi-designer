@@ -9,6 +9,7 @@ import CFunnelChart from './CFunnelChart.vue';
 import CRect from './CRect.vue';
 import CSankeyChart from './CSanKeyChart.vue';
 import CRadarChart from './CRadarChart.vue';
+import CTextList from './CTextList.vue';
 
 export default {
   CTable,
@@ -22,4 +23,5 @@ export default {
   CRect,
   CSankey: CSankeyChart,
   CRadar: CRadarChart,
+  CCarousel: CTextList,
 };
