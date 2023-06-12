@@ -13,7 +13,7 @@
 
 ## 预览
 
-![](http://rb6rk8283.hd-bkt.clouddn.com/editor/202205162059111.png)
+![](https://github.com/cadben/images_store/blob/master/img/uTools_1686558128849.png?raw=true)
 
 ## 支持以下几种图表
 
