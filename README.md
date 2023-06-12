@@ -13,7 +13,7 @@
 
 ## 预览
 
-![](https://github.com/cadben/images_store/blob/master/img/uTools_1686558128849.png?raw=true)
+![](https://github.com/cadben/images_store/blob/master/img/%E6%A1%88%E4%BE%8B.png?raw=true)
 
 ## 支持以下几种图表
 
